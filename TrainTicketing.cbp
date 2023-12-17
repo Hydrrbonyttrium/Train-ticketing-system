@@ -32,6 +32,16 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="DataEntry.cpp" />
+		<Unit filename="DataEntry.h" />
+		<Unit filename="Login.cpp" />
+		<Unit filename="Login.h" />
+		<Unit filename="Search.cpp" />
+		<Unit filename="Search.h" />
+		<Unit filename="Sqlist.cpp" />
+		<Unit filename="Sqlist.h" />
+		<Unit filename="Ticket.cpp" />
+		<Unit filename="Ticket.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
