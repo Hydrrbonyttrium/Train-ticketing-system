@@ -34,12 +34,14 @@
 		</Compiler>
 		<Unit filename="DataEntry.cpp" />
 		<Unit filename="DataEntry.h" />
+		<Unit filename="Graph.cpp" />
+		<Unit filename="Graph.h" />
 		<Unit filename="Login.cpp" />
 		<Unit filename="Login.h" />
 		<Unit filename="Search.cpp" />
 		<Unit filename="Search.h" />
-		<Unit filename="Sqlist.cpp" />
-		<Unit filename="Sqlist.h" />
+		<Unit filename="SqList.cpp" />
+		<Unit filename="SqList.h" />
 		<Unit filename="Ticket.cpp" />
 		<Unit filename="Ticket.h" />
 		<Unit filename="main.cpp" />

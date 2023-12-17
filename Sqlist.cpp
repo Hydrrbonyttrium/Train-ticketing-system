@@ -2,8 +2,8 @@
 #include <vector>
 #include <iomanip>
 
-#include"public1.H"
-#include"sqlist.H"
+#include"Public1.h"
+#include"SqList.h"
 
 using namespace std;
 
