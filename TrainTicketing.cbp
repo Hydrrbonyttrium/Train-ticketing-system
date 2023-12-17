@@ -38,6 +38,7 @@
 		<Unit filename="Graph.h" />
 		<Unit filename="Login.cpp" />
 		<Unit filename="Login.h" />
+		<Unit filename="Public1.h" />
 		<Unit filename="Search.cpp" />
 		<Unit filename="Search.h" />
 		<Unit filename="SqList.cpp" />
