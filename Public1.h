@@ -20,5 +20,5 @@
  #define INFEASIBLE -1
  //Status 是函数的类型，其值是函数结果状态代码，如OK等
  typedef int Status;
-
+ typedef int Boolean;
 #endif // PUBLIC1_H_INCLUDED
