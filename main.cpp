@@ -1,4 +1,9 @@
-#include <iostream>
+#include "Public1.h"
+#include "Reality.h"
+#include "Search.h"
+#include "Ticket.h"
+#include "DataEntry.h"
+#include "Login.h"
 
 using namespace std;
 

@@ -1,6 +1,7 @@
- #include<Graph.h>
- #include<public1.h>
+#ifndef HEADER_A0A1E4BA5456B222
+#define HEADER_A0A1E4BA5456B222
 
+ #include "Graph.h"
 
  typedef struct City
  {
@@ -25,7 +26,7 @@
     string name;
     string sex;
     string id;
-    Ticket* tickets; 
+    Ticket* tickets;
     int authority;
  };//Sqlist
 
@@ -48,3 +49,5 @@
    int train_distance;
    Tree carriage;
  };//Sqlist
+#endif // header guard
+

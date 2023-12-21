@@ -8,10 +8,7 @@
 
 1702794705 source:e:\projects\trainticketing\search.cpp
 
-1702796482 source:e:\projects\trainticketing\sqlist.cpp
-	<iostream>
-	<vector>
-	<iomanip>
+1703141004 source:e:\projects\trainticketing\sqlist.cpp
 	"Public1.h"
 	"SqList.h"
 
