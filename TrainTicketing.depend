@@ -1,0 +1,51 @@
+# depslib dependency file v1.0
+1702794633 source:e:\projects\trainticketing\dataentry.cpp
+
+1702794562 source:e:\projects\trainticketing\login.cpp
+
+1702794461 source:e:\projects\trainticketing\main.cpp
+	<iostream>
+
+1702794705 source:e:\projects\trainticketing\search.cpp
+
+1702796482 source:e:\projects\trainticketing\sqlist.cpp
+	<iostream>
+	<vector>
+	<iomanip>
+	"Public1.h"
+	"SqList.h"
+
+1703138352 e:\projects\trainticketing\public1.h
+	<string.h>
+	<ctype.h>
+	<malloc.h>
+	<limits.h>
+	<stdio.h>
+	<stdlib.h>
+	<io.h>
+	<math.h>
+	<process.h>
+	<iostream>
+	<string.h>
+
+1702794921 e:\projects\trainticketing\sqlist.h
+
+1702796176 source:e:\projects\trainticketing\ticket.cpp
+	"Ticket.h"
+
+1702796179 e:\projects\trainticketing\ticket.h
+	"SqList.h"
+
+1702797299 source:e:\projects\trainticketing\graph.cpp
+	"Public1.h"
+	"Graph.h"
+	"LinkQueue.h"
+
+1702797299 e:\projects\trainticketing\graph.h
+
+1697802363 e:\projects\trainticketing\linkqueue.h
+	"public1.h"
+
+1697803199 source:e:\projects\trainticketing\linkqueue.cpp
+	"LinkQueue.h"
+
