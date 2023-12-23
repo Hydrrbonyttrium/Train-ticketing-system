@@ -14,9 +14,9 @@
 
  typedef struct Ticket
  {
-   string train_number;
-   string start;
-   string end;
+   string train_number; // 车次
+   string start;        // 起始车站
+   string end;          // 终点车站
    string seat;
    int price;
    int remains;

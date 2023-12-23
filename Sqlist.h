@@ -13,7 +13,6 @@ public:
     ~SqList();
 
     Status InitList();
-    Status DestroyList();
     int GetLength();
     int LocateElem(const T& e, Status (*compare)(const T&, const T&)) const;
     Status GetElem(int i, T& e) const;
@@ -27,6 +26,7 @@ private:
     T* elem;
     int length;
     int listsize;
+    Status DestroyList();
 };
 
 #include "SqList.tpp" // 包含模板实现

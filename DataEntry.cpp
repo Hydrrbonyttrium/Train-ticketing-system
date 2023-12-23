@@ -99,7 +99,9 @@ void ReadTicket(LinkedList<Ticket>& TicketList) {
     file.close();
 }
 
-void ReadCIty(ALGraph){}
+void ReadCIty(ALGraph){
+
+}
 
 
 void WriteUser(SqList<User>& UserList) {
