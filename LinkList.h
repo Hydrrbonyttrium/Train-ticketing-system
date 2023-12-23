@@ -32,6 +32,6 @@ private:
     void DestroyList();
 };
 
-#include "LinkedList.tpp" // 包含模板实现
+#include "LinkList.tpp" // 包含模板实现
 
 #endif // LINKLIST_H_INCLUDED
