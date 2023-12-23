@@ -7,6 +7,7 @@
 
  typedef struct City
  {
+   string name;
    VNode Station;
  };//Graph
 
@@ -43,11 +44,11 @@
  };//Sqlist
 
 
- typedef struct TrainNunmber
+ typedef struct TrainNumber
  {
    string number;
-   City begin;
-   City end;
+   string begin;
+   string end;
    int ticket_number;
    int distance;
    int train_distance;

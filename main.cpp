@@ -26,11 +26,13 @@ int main() {
             cout << "ID: " << firstUser.id << endl;
             cout << "车票: " << firstUser.tickets << endl;
             cout << "权限: " << firstUser.authority << endl;
+            firstUser.account="123456";
+            WriteUser(User_List);
         }
-    } else {
+    } 
+    else {
         cout << "没有读取到任何用户数据。" << endl;
     }
-
     // 清理用户列表
     User_List.DestroyList();
     return 0;

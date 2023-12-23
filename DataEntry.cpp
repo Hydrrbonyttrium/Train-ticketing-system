@@ -27,7 +27,8 @@ void ReadUser(SqList<User>& UserList) {
 
     file.close();
 }
-void ReadUser(SqList<Train>& TrainList) {
+
+void ReadTrain(SqList<Train>& TrainList) {
     std::ifstream file("data\\Train.csv");
     if (!file.is_open()) {
         std::cerr << "无法打开文件" << std::endl;
@@ -50,3 +51,33 @@ void ReadUser(SqList<Train>& TrainList) {
 
     file.close();
 }
+
+void ReadTrainNumber(SqList<TrainNumber>& TrainNumberList) {
+    FILE* file= fopen("data\\TrainNumber.csv","r");
+
+    while (file) {
+        TrainNumber tempTrainNumber;
+
+        // 读取并分割每行的字段
+            fscanf(file,"%s\t%s\t%s\t%d\t%d\t%d\t%s\n",tempTrainNumber.number,tempTrainNumber.begin,tempTrainNumber.end,tempTrainNumber.ticket_number,tempTrainNumber.distance,tempTrainNumber.train_distance,tempTrainNumber.carriage.data);
+    
+
+        // 将读取的用户添加到列表中
+        TrainNumberList.ListInsert(TrainNumberList.GetLength() + 1, tempTrainNumber);
+    }
+
+    fclose(file);
+}
+
+void WriteUser(SqList<User>& UserList)
+{
+    FILE* file = fopen("data\\User.csv","w");
+    for(int i=0;i<=UserList.GetLength();i++)
+    {
+        User tempUser;
+        UserList.GetElem(i,tempUser); 
+        fprintf(file,"%s\t%s\t%s\t%s\t%s\t%s\t%d\n",tempUser.account,tempUser.password,tempUser.name, tempUser.sex,tempUser.tickets,tempUser.authority);
+    }
+    fclose(file);
+}
+
