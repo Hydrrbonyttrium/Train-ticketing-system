@@ -29,7 +29,7 @@ Status DestroyList(SqList &L)
 
 Status comp(ElemType c1, ElemType c2)
 {
-    if(c1==c2)
+    if(c1.account == c2.account)
         return TRUE;
     else
         return FALSE;
@@ -132,14 +132,14 @@ Status PriorElem(SqList L,ElemType cur_e,ElemType &pre_e)
  {
      // 若cur_e是L的数据元素，且不是第一个，则用pre_e返回它的前驱
      // 则操作失败
-     if (cur_e == L.elem[0]) //确保不是第一个
+     if (cur_e.account == L.elem[0].account) //确保不是第一个
      {
          return ERROR;
      }
 
      for (int i = 1; i < L.length; i++)
      {
-         if (L.elem[i] == cur_e)
+         if (L.elem[i].account == cur_e.account)
          {
              pre_e = L.elem[i - 1]; //在这里已经确保不会越界
              return OK;
@@ -153,7 +153,7 @@ Status PriorElem(SqList L,ElemType cur_e,ElemType &pre_e)
      int valid_index = 0;
      for (int i = 0; i < L.length; i++)
      {
-         if (L.elem[i] != x)
+         if (L.elem[i].account != x.account)
          {
              L.elem[valid_index] = L.elem[i];
              valid_index++;

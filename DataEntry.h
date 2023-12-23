@@ -4,6 +4,6 @@
 #include "Graph.h"
 #include "Sqlist.h"
 #include "LinkQueue.h"
-void ReadUser(SqListUser *User);
+void ReadUser(SqListUser & User);
 #endif // DATAENTRY_H_INCLUDED
 

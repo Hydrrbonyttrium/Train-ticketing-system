@@ -5,14 +5,16 @@
 #include "DataEntry.h"
 #include "Login.h"
 #include "Sqlist.h"
-SqListUser User_List[500];
+SqListUser User_List;
 
 using namespace std;
 
 int main()
 {
     cout << "Hello world!" << endl;
+    InitList(User_List);
     ReadUser(User_List);
-    printf("%s",User_List[0].elem.account);
+    printf("%s", User_List.elem[0].account);
+    DestroyList(User_List);
     return 0;
 }
