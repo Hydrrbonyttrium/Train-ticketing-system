@@ -1,7 +1,7 @@
 #ifndef LINKQUEUE_H_INCLUDED
 #define LINKQUEUE_H_INCLUDED
 
-#include "public1.h"
+#include "Public1.h"
 typedef int QElemType;
 
 typedef struct QNode {

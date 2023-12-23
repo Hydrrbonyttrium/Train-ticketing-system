@@ -24,6 +24,6 @@ Status ListDelete(SqList &L,int i,ElemType &e);
 void print(ElemType c);
 Status ListTraverse(SqList L,void(* visit)(ElemType));
 Status PriorElem(SqList L,ElemType cur_e,ElemType &pre_e);
-Status DeleteAllX(SqList &L, ElemType4 x)
+Status DeleteAllX(SqList &L, ElemType x);
 
 #endif // SQLIST_H_INCLUDED
