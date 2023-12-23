@@ -7,7 +7,10 @@ void ReadUser(SqListUser &User)
         fprintf(stderr, "无法打开文件\n");
         exit(OVERFLOW);
     }
-   while (fscanf(file, "%s,%s,%s,%s,%s,%s,%d\n",User.elem->account,User.elem->password,User.elem->name,User.elem->sex,User.elem->id,User.elem->tickets,&User.elem->authority) == 6)
-   User.elem++;
+   while (fscanf(file, "%99[^,],%99[^,],%99[^,],%99[^,],%99[^,],%d\n",
+                  User.elem->account, User.elem->password, User.elem->name, User.elem->sex, User.elem->id, &User.elem->authority) == 6) {
+        
+    }
+   
    fclose(file);
 }
