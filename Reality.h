@@ -15,10 +15,11 @@
  typedef struct Ticket
  {
    string train_number;
-   City start;
-   City end;
-   int price;
+   string start;
+   string end;
    string seat;
+   int price;
+   int remains;
  };//Linklist
 
 

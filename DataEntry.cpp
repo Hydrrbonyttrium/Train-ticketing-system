@@ -69,7 +69,38 @@ void ReadTrainNumber(SqList<TrainNumber>& TrainNumberList) {
     fclose(file);
 }
 
+void ReadTicket(LinkedList<Ticket>& TicketList) {
+    std::ifstream file("data\\Ticket.csv");
+    if (!file.is_open()) {
+        std::cerr << "无法打开文件" << std::endl;
+        exit(EXIT_FAILURE);
+    }
+
+    std::string line;
+    while (getline(file, line)) {
+        std::istringstream iss(line);
+        Ticket tempTicket;
+
+        // 读取并分割每行的字段
+        getline(iss, tempTicket.train_number, ',');
+        getline(iss, tempTicket.start, ',');
+        getline(iss, tempTicket.end, ',');
+        getline(iss, tempTicket.seat, ',');
+
+        string price;
+        getline(iss, price, ',');
+        tempTicket.price = std::stoi(price);
+        iss >> tempTicket.remains;
+
+        // 将读取的用户添加到列表中
+        TicketList.ListInsert(1, tempTicket);
+    }
+
+    file.close();
+}
+
 void ReadCIty(ALGraph){}
+
 
 void WriteUser(SqList<User>& UserList) {
     FILE* file = fopen("data\\User.csv", "w");
@@ -134,6 +165,6 @@ void WriteTrainNumber(SqList<TrainNumber>& TrainNumberList) {
                     );
         }
     }
-    fclose(file);    
+    fclose(file);
 }
 
