@@ -6,7 +6,6 @@
 #include "Login.h"
 #include "Sqlist.h"
 #include "LinkList.h"
-
 using namespace std;
 
 int main() {
@@ -22,7 +21,24 @@ int main() {
      * 给后续使用
     *****************************/
     // 这里使用一个示例
-    user_list.GetElem(1, current_user);
+    // 注册新用户
+    User newUser = {"zhangsan", "password123", "New User"};
+    if (Register(user_list, newUser)) {
+        std::cout << "注册成功！" << std::endl;
+    }
+
+    // 用户登录
+    std::string account, password;
+    std::cout << "请输入账号: ";
+    std::cin >> account;
+    std::cout << "请输入密码: ";
+    std::cin >> password;
+
+    if (Login(user_list, account, password, current_user)) {
+        std::cout << "登录成功！欢迎 " << current_user.name << std::endl;
+    } else {
+        std::cout << "登录失败！" << std::endl;
+    }
 
     //初始化票的链表
     LinkedList<Ticket> ticket_list;
@@ -45,9 +61,11 @@ int main() {
 
     // 测试完成将结果写入
     // 注意这里要删除一个插入一个
+    int user_delete_index;
     User user_delete_temp;
-    user_list.ListDelete(1, user_delete_temp);
-    user_list.ListInsert(1, current_user);
+    user_delete_index = user_list.LocateElem(current_user, UserCompare);
+    user_list.ListDelete(user_delete_index, user_delete_temp);
+    user_list.ListInsert(user_delete_index, current_user);
 
     WriteUser(user_list);
 

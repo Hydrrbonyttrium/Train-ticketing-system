@@ -1,12 +1,11 @@
- #include<string.h>
- #include<ctype.h>
- #include<malloc.h> // malloc()等
- #include<limits.h> // INT_MAX等
- #include<stdio.h> // EOF(=^Z或F6),NULL
- #include<stdlib.h> // atoi()
- #include<io.h> // eof()
- #include<math.h> // floor(),ceil(),abs()
- #include<process.h> // exit()
- //#include<iostream.h> // cout,cin
- #include<iostream>
-
+// #include<string.h>
+// #include<ctype.h>
+// #include<malloc.h> // malloc()等
+// #include<limits.h> // INT_MAX等
+// #include<stdio.h> // EOF(=^Z或F6),NULL
+// #include<stdlib.h> // atoi()
+// #include<io.h> // eof()
+// #include<math.h> // floor(),ceil(),abs()
+// #include<process.h> // exit()
+// //#include<iostream.h> // cout,cin
+// #include<iostream>

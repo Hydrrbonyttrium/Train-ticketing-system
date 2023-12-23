@@ -1,8 +1,10 @@
 # depslib dependency file v1.0
-1703332261 source:e:\projects\trainticketing\dataentry.cpp
+1703341669 source:e:\projects\trainticketing\dataentry.cpp
 	"DataEntry.h"
 
-1702794562 source:e:\projects\trainticketing\login.cpp
+1703345016 source:e:\projects\trainticketing\login.cpp
+	"Login.h"
+	<iostream>
 
 1703332261 source:e:\projects\trainticketing\main.cpp
 	"Public1.h"
@@ -14,7 +16,7 @@
 	"Sqlist.h"
 	"LinkList.h"
 
-1702794705 source:e:\projects\trainticketing\search.cpp
+1703343993 source:e:\projects\trainticketing\search.cpp
 
 1703301410 source:e:\projects\trainticketing\sqlist.cpp
 	"Public1.h"
@@ -35,14 +37,14 @@
 	<sstream>
 	<string.h>
 
-1703333042 e:\projects\trainticketing\sqlist.h
+1703333690 e:\projects\trainticketing\sqlist.h
 	"Reality.h"
 	"SqList.tpp"
 
-1703332539 source:e:\projects\trainticketing\ticket.cpp
+1703333690 source:e:\projects\trainticketing\ticket.cpp
 	"Ticket.h"
 
-1703332657 e:\projects\trainticketing\ticket.h
+1703333690 e:\projects\trainticketing\ticket.h
 	"Public1.h"
 	"Reality.h"
 	"LinkList.h"
@@ -134,7 +136,7 @@
 	"LinkList.h"
 	"LinkQueue.h"
 
-1703329490 e:\projects\trainticketing\reality.h
+1703333690 e:\projects\trainticketing\reality.h
 	"Graph.h"
 	<string.h>
 	"Tree.h"
@@ -143,7 +145,10 @@
 	"Graph.h"
 	"SqList.h"
 
-1702794803 e:\projects\trainticketing\login.h
+1703345044 e:\projects\trainticketing\login.h
+	"Public1.h"
+	"Reality.h"
+	"SqList.h"
 
 1703309818 e:\projects\trainticketing\sqlist.tpp
 
