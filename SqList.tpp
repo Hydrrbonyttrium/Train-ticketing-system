@@ -129,15 +129,3 @@ Status SqList<T>::PriorElem(const T& cur_e, T& pre_e) const {
     return ERROR;
 }
 
-// 删除所有特定元素
-template <typename T>
-Status SqList<T>::DeleteAllX(const T& x) {
-    int k = 0;
-    for (int i = 0; i < length; ++i) {
-        if (!(elem[i] == x)) {
-            elem[k++] = elem[i];
-        }
-    }
-    length = k;
-    return OK;
-}

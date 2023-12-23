@@ -22,7 +22,6 @@ public:
     void print(const T& c) const;
     Status ListTraverse(void (*visit)(const T&)) const;
     Status PriorElem(const T& cur_e, T& pre_e) const;
-    Status DeleteAllX(const T& x);
 
 private:
     T* elem;
