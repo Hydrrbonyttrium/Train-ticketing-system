@@ -2,7 +2,9 @@
 #define REALITY_H_INCLUDED
 
 #include "Graph.h"
+#include <string.h>
 #include "Tree.h"
+
  typedef struct City
  {
    VNode Station;
@@ -19,6 +21,7 @@
  };//Linklist
 
 
+
  typedef struct User
  {
     string account;
@@ -26,9 +29,10 @@
     string name;
     string sex;
     string id;
-    Ticket* tickets;
+    string tickets;
     int authority;
- };//Sqlist
+ }User;//Sqlist
+
 
 
  typedef struct Train
