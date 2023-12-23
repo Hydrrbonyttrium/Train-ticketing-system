@@ -17,7 +17,6 @@ public:
     LinkedList();
     ~LinkedList();
 
-    void CreateList(int n);
     void ListInsert(int i, const T& e);
     void ListDelete(int i, T& e);
     int ListLength() const;
@@ -32,6 +31,6 @@ private:
     void DestroyList();
 };
 
-#include "LinkedList.tpp" // 包含模板实现
+#include "LinkList.tpp"
 
 #endif // LINKLIST_H_INCLUDED

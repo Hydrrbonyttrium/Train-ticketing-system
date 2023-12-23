@@ -10,16 +10,6 @@ LinkedList<T>::~LinkedList() {
 }
 
 template <typename T>
-void LinkedList<T>::CreateList(int n) {
-    std::cout << "请输入 " << n << " 个数据\n";
-    for (int i = 0; i < n; ++i) {
-        T data;
-        std::cin >> data;
-        ListInsert(1, data); // 将新元素插入到链表的开始位置
-    }
-}
-
-template <typename T>
 void LinkedList<T>::ListInsert(int i, const T& e) {
     ListNode<T>* current = head;
     int j = 0;
