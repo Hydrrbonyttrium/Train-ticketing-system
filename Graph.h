@@ -1,6 +1,6 @@
 #ifndef GRAPH_H_INCLUDED
 #define GRAPH_H_INCLUDED
-
+#include "Public1.h"
 #define MAX_VERTEX_NUM 20
 typedef enum {DG,DN,AG,AN} GraphKind; /* {有向图,有向网,无向图,无向网} */
 #define MAX_NAME 1 /* 顶点字符串的最大长度+1 */
