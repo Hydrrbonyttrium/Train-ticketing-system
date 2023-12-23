@@ -99,6 +99,9 @@ void ReadTicket(LinkedList<Ticket>& TicketList) {
     file.close();
 }
 
+void ReadCIty(ALGraph){}
+
+
 void WriteUser(SqList<User>& UserList) {
     FILE* file = fopen("data\\User.csv", "w");
     if (!file) {
@@ -122,4 +125,46 @@ void WriteUser(SqList<User>& UserList) {
     fclose(file);
 }
 
+void WriteTrain(SqList<Train>& TrainList) {
+    FILE* file = fopen("data\\Train.csv", "w");
+    if (!file) {
+        std::cerr << "无法打开文件进行写入" << std::endl;
+        return;
+    }
+
+    for (int i = 1; i <= TrainList.GetLength(); i++) {
+        Train tempTrain;
+        if (TrainList.GetElem(i, tempTrain) == OK) { // 确保能够获取元素
+            fprintf(file, "%s,%s,%s\n",
+                    tempTrain.train_type.c_str(),
+                    tempTrain.train_set.c_str(),
+                    tempTrain.seat_type.c_str());
+        }
+    }
+    fclose(file);
+}
+
+void WriteTrainNumber(SqList<TrainNumber>& TrainNumberList) {
+    FILE* file = fopen("data\\TrainNumber.csv", "w");
+    if (!file) {
+        std::cerr << "无法打开文件进行写入" << std::endl;
+        return;
+    }
+
+    for (int i = 1; i <= TrainNumberList.GetLength(); i++) {
+        TrainNumber tempTrainNumber;
+        if (TrainNumberList.GetElem(i, tempTrainNumber) == OK) { // 确保能够获取元素
+            fprintf(file, "%s,%s,%s,%d,%d,%d,%s\n",
+                    tempTrainNumber.number.c_str(),
+                    tempTrainNumber.begin.c_str(),
+                    tempTrainNumber.end.c_str(),
+                    &tempTrainNumber.ticket_number,
+                    &tempTrainNumber.distance,
+                    &tempTrainNumber.train_distance,
+                    tempTrainNumber.carriage
+                    );
+        }
+    }
+    fclose(file);
+}
 
