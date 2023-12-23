@@ -3,18 +3,31 @@
 
 #include <iostream>
 
-struct Tree {
-  int data;
-  Tree *left;
-  Tree *right;
-  Tree *parent;
+template <typename T>
+struct TreeNode {
+    T data;
+    TreeNode<T>* firstChild;
+    TreeNode<T>* nextSibling;
+
+    TreeNode(T data) : data(data), firstChild(nullptr), nextSibling(nullptr) {}
 };
 
-Tree *createTree(int data);
-void insertLeftChild(Tree *root, int data);
-void insertRightChild(Tree *root, int data);
-void preOrderTraversal(Tree *root);
-void inOrderTraversal(Tree *root);
-void postOrderTraversal(Tree *root);
+template <typename T>
+class Tree {
+public:
+    Tree();
+    ~Tree();
+
+    TreeNode<T>* InsertChild(TreeNode<T>* parent, const T& data);
+    void Traverse(TreeNode<T>* node, void (*visit)(const T&));
+
+private:
+    TreeNode<T>* root;
+
+    void DestroyTree(TreeNode<T>* node);
+};
+
+#include "Tree.tpp" // 包含模板实现
 
 #endif // TREE_H_INCLUDED
+
