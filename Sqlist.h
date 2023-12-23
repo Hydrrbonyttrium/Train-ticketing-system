@@ -8,7 +8,7 @@
 // 实现SqList的存储定义
 typedef struct SqList
 {
-    User elem;
+    User *elem;
     int length;
     int listsize;
 
