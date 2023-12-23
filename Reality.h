@@ -2,7 +2,7 @@
 #define REALITY_H_INCLUDED
 
 #include "Graph.h"
-
+#include "Tree.h"
  typedef struct City
  {
    VNode Station;
@@ -49,6 +49,5 @@
    int train_distance;
    Tree carriage;
  };//Sqlist
-#endif // header guard
 
 #endif // REALITY_H_INCLUDED
