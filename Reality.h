@@ -1,7 +1,7 @@
-#ifndef HEADER_A0A1E4BA5456B222
-#define HEADER_A0A1E4BA5456B222
+#ifndef REALITY_H_INCLUDED
+#define REALITY_H_INCLUDED
 
- #include "Graph.h"
+#include "Graph.h"
 
  typedef struct City
  {
@@ -51,3 +51,4 @@
  };//Sqlist
 #endif // header guard
 
+#endif // REALITY_H_INCLUDED

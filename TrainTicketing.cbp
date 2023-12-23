@@ -36,6 +36,8 @@
 		<Unit filename="DataEntry.h" />
 		<Unit filename="Graph.cpp" />
 		<Unit filename="Graph.h" />
+		<Unit filename="LinkQueue.cpp" />
+		<Unit filename="LinkQueue.h" />
 		<Unit filename="Login.cpp" />
 		<Unit filename="Login.h" />
 		<Unit filename="Public1.h" />
