@@ -19,11 +19,6 @@ Status SqList<T>::InitList() {
     return OK;
 }
 
-template <typename T>
-int SqList<T>::GetLength() {
-    return length;
-}
-
 // 销毁列表
 template <typename T>
 Status SqList<T>::DestroyList() {
@@ -32,6 +27,11 @@ Status SqList<T>::DestroyList() {
     length = 0;
     listsize = 0;
     return OK;
+}
+
+template <typename T>
+int SqList<T>::GetLength() {
+    return length;
 }
 
 // 查找元素
