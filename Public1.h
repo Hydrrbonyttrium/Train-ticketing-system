@@ -11,6 +11,8 @@
  #include<math.h> // floor(),ceil(),abs()
  #include<process.h> // exit()
  #include<iostream>
+ #include <fstream>
+ #include <sstream>
  #include<string.h>
  using namespace std;
  // 函数结果状态代码

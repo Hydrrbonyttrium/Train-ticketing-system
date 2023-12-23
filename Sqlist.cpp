@@ -14,18 +14,17 @@ Status InitList(SqList &L)
     return OK;
 }
 
-Status DestroyList(SqList &L)
-{
-    //销毁顺序线性表L
-    if (L.elem)
-    {
-        free(L.elem);
+Status DestroyList(SqList &L) {
+    // 销毁顺序线性表L
+    if (L.elem) {
+        delete[] L.elem; // 使用 delete[] 而不是 free
         L.elem = NULL;
         L.length = 0;
         L.listsize = 0;
     }
     return OK;
 }
+
 
 Status comp(ElemType c1, ElemType c2)
 {

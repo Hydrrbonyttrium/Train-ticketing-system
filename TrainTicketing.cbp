@@ -48,6 +48,8 @@
 		<Unit filename="SqList.h" />
 		<Unit filename="Ticket.cpp" />
 		<Unit filename="Ticket.h" />
+		<Unit filename="Tree.cpp" />
+		<Unit filename="Tree.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
