@@ -8,8 +8,7 @@ void ReadUser(SqListUser &User)
         exit(OVERFLOW);
     }
    while (fscanf(file, "%99[^,],%99[^,],%99[^,],%99[^,],%99[^,],%d\n",
-                  User.elem->account, User.elem->password, User.elem->name, User.elem->sex, User.elem->id, &User.elem->authority) == 6) {
-        
+                  User.elem->account, User.elem->password, User.elem->name, User.elem->sex, User.elem->id, &User.elem->authority) == 6) {   
     }
    
    fclose(file);
