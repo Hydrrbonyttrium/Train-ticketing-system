@@ -69,7 +69,7 @@ void ReadTrainNumber(SqList<TrainNumber>& TrainNumberList) {
     fclose(file);
 }
 
-void ReadCIty(ALGraph)
+void ReadCIty(ALGraph){}
 
 void WriteUser(SqList<User>& UserList) {
     FILE* file = fopen("data\\User.csv", "w");
@@ -107,7 +107,7 @@ void WriteTrain(SqList<Train>& TrainList) {
             fprintf(file, "%s,%s,%s\n",
                     tempTrain.train_type.c_str(),
                     tempTrain.train_set.c_str(),
-                    tempTrain.seat_type.c_str(),);
+                    tempTrain.seat_type.c_str());
         }
     }
     fclose(file);
