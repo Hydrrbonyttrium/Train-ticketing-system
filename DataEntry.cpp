@@ -170,3 +170,19 @@ void WriteTrainNumber(SqList<TrainNumber>& TrainNumberList) {
     fclose(file);
 }
 
+void WriteTicket(LinkedList<Ticket>& TicketList) {
+    FILE* file = fopen("data\\Ticket.csv", "w");
+    if (!file) {
+        std::cerr << "无法打开文件进行写入" << std::endl;
+        return;
+    }
+    int i=0;
+    while(TicketList.GetElemPtr(i))
+    {
+        Ticket tempTicket;
+        tempTicket=TicketList.GetElem(i);
+        fprintf(file,"%s,%s,%s,%s,%d,%d\n",tempTicket.train_number,tempTicket.start,tempTicket.end,tempTicket.seat,&tempTicket.price,&tempTicket.remains);
+        i++;
+    }
+    fclose(file);
+}
