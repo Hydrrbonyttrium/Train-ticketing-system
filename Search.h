@@ -1,7 +1,12 @@
-#ifndef SEARCH_H_INCLUDED
-#define SEARCH_H_INCLUDED
+ #include<string.h>
+ #include<ctype.h>
+ #include<malloc.h> // malloc()µ»
+ #include<limits.h> // INT_MAXµ»
+ #include<stdio.h> // EOF(=^ZªÚF6),NULL
+ #include<stdlib.h> // atoi()
+ #include<io.h> // eof()
+ #include<math.h> // floor(),ceil(),abs()
+ #include<process.h> // exit()
+ //#include<iostream.h> // cout,cin
+ #include<iostream>
 
-#include "Graph.h"
-#include "SqList.h"
-
-#endif // SEARCH_H_INCLUDED
