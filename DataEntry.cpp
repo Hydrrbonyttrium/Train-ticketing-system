@@ -13,12 +13,12 @@ void ReadUser(SqList<User>& UserList) {
         User tempUser;
 
         // 读取并分割每行的字段
-        getline(iss, tempUser.account, '\t');
-        getline(iss, tempUser.password, '\t');
-        getline(iss, tempUser.name, '\t');
-        getline(iss, tempUser.sex, '\t');
-        getline(iss, tempUser.id, '\t');
-        getline(iss, tempUser.tickets, '\t');
+        getline(iss, tempUser.account, ',');
+        getline(iss, tempUser.password, ',');
+        getline(iss, tempUser.name, ',');
+        getline(iss, tempUser.sex, ',');
+        getline(iss, tempUser.id, ',');
+        getline(iss, tempUser.tickets, ',');
         iss >> tempUser.authority;
 
         // 将读取的用户添加到列表中
@@ -41,8 +41,8 @@ void ReadTrain(SqList<Train>& TrainList) {
         Train tempTrain;
 
         // 读取并分割每行的字段
-        getline(iss, tempTrain.train_type, '\t');
-        getline(iss, tempTrain.train_set, '\t');
+        getline(iss, tempTrain.train_type, ',');
+        getline(iss, tempTrain.train_set, ',');
         iss >> tempTrain.seat_type;
 
         // 将读取的用户添加到列表中
@@ -59,8 +59,8 @@ void ReadTrainNumber(SqList<TrainNumber>& TrainNumberList) {
         TrainNumber tempTrainNumber;
 
         // 读取并分割每行的字段
-            fscanf(file,"%s\t%s\t%s\t%d\t%d\t%d\t%s\n",tempTrainNumber.number,tempTrainNumber.begin,tempTrainNumber.end,tempTrainNumber.ticket_number,tempTrainNumber.distance,tempTrainNumber.train_distance,tempTrainNumber.carriage.data);
-    
+            fscanf(file,"%s,%s,%s,%d,%d,%d,%s\n",tempTrainNumber.number,tempTrainNumber.begin,tempTrainNumber.end,tempTrainNumber.ticket_number,tempTrainNumber.distance,tempTrainNumber.train_distance,tempTrainNumber.carriage);
+
 
         // 将读取的用户添加到列表中
         TrainNumberList.ListInsert(TrainNumberList.GetLength() + 1, tempTrainNumber);
@@ -69,15 +69,27 @@ void ReadTrainNumber(SqList<TrainNumber>& TrainNumberList) {
     fclose(file);
 }
 
-void WriteUser(SqList<User>& UserList)
-{
-    FILE* file = fopen("data\\User.csv","w");
-    for(int i=0;i<=UserList.GetLength();i++)
-    {
+void WriteUser(SqList<User>& UserList) {
+    FILE* file = fopen("data\\User.csv", "w");
+    if (!file) {
+        std::cerr << "无法打开文件进行写入" << std::endl;
+        return;
+    }
+
+    for (int i = 1; i <= UserList.GetLength(); i++) {
         User tempUser;
-        UserList.GetElem(i,tempUser); 
-        fprintf(file,"%s\t%s\t%s\t%s\t%s\t%s\t%d\n",tempUser.account,tempUser.password,tempUser.name, tempUser.sex,tempUser.tickets,tempUser.authority);
+        if (UserList.GetElem(i, tempUser) == OK) { // 确保能够获取元素
+            fprintf(file, "%s,%s,%s,%s,%s,%s,%d\n",
+                    tempUser.account.c_str(),
+                    tempUser.password.c_str(),
+                    tempUser.name.c_str(),
+                    tempUser.sex.c_str(),
+                    tempUser.id.c_str(),
+                    tempUser.tickets.c_str(),
+                    tempUser.authority);
+        }
     }
     fclose(file);
 }
+
 

@@ -52,7 +52,7 @@
    int ticket_number;
    int distance;
    int train_distance;
-   Tree carriage;
+   string carriage;
  };//Sqlist
 
 #endif // REALITY_H_INCLUDED

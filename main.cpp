@@ -27,9 +27,15 @@ int main() {
             cout << "车票: " << firstUser.tickets << endl;
             cout << "权限: " << firstUser.authority << endl;
             firstUser.account="123456";
+
+            /////////////////////////////////////////由于局部变量，这里只能先删除再插入
+            User NoneUse;
+            User_List.ListDelete(1, NoneUse);
+            User_List.ListInsert(1, firstUser);
+
             WriteUser(User_List);
         }
-    } 
+    }
     else {
         cout << "没有读取到任何用户数据。" << endl;
     }
