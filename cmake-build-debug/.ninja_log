@@ -1,0 +1,12 @@
+# ninja log v5
+8	347	7252125458647441	CMakeFiles/TrainTicketing.dir/Ticket.cpp.obj	1fe3293f9793697d
+10	326	7252125458418932	CMakeFiles/TrainTicketing.dir/LinkQueue.cpp.obj	d596a1856f4bfed7
+22	379	7252125458967465	CMakeFiles/TrainTicketing.dir/Login.cpp.obj	77860ceef017e080
+13	352	7252125458697447	CMakeFiles/TrainTicketing.dir/Graph.cpp.obj	256dc33356ec7f1b
+6	1742	7252125472558360	CMakeFiles/TrainTicketing.dir/Search.cpp.obj	f1750f5a6dc0f1c6
+0	72	7252125529879405	build.ninja	81cd79525bc3a5e9
+25	1392	7252125469085424	CMakeFiles/TrainTicketing.dir/main.cpp.obj	a57f9aef2ac83148
+17	1525	7252125470390152	CMakeFiles/TrainTicketing.dir/DataEntry.cpp.obj	662003b858dadaf5
+1742	1976	7252125474887042	TrainTicketing.exe	4f649722eb794dbb
+7	1270	7252128049760965	CMakeFiles/TrainTicketing.dir/main.cpp.obj	a57f9aef2ac83148
+1270	1529	7252128052332836	TrainTicketing.exe	4f649722eb794dbb
