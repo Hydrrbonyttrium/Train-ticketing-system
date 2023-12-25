@@ -99,11 +99,6 @@ void ReadTicket(LinkedList<Ticket>& TicketList) {
     file.close();
 }
 
-void ReadCIty(ALGraph){
-
-}
-
-
 void WriteUser(SqList<User>& UserList) {
     FILE* file = fopen("data\\User.csv", "w");
     if (!file) {
@@ -185,4 +180,55 @@ void WriteTicket(LinkedList<Ticket>& TicketList) {
         i++;
     }
     fclose(file);
+}
+
+void ReadCity(Graph& g, WeightMap& weightmap, std::unordered_map<std::string, Vertex>& stationMap) {
+    std::ifstream file("data\\City.csv");
+    std::string line;
+
+    while (std::getline(file, line)) {
+        std::istringstream iss(line);
+        std::string station1, station2;
+        int distance;
+
+        std::getline(iss, station1, ',');
+        std::getline(iss, station2, ',');
+        iss >> distance;
+
+        Vertex u, v;
+        if (stationMap.find(station1) == stationMap.end()) {
+            u = add_vertex(g);
+            stationMap[station1] = u;
+        } else {
+            u = stationMap[station1];
+        }
+
+        if (stationMap.find(station2) == stationMap.end()) {
+            v = add_vertex(g);
+            stationMap[station2] = v;
+        } else {
+            v = stationMap[station2];
+        }
+
+        Edge e;
+        bool inserted;
+        tie(e, inserted) = add_edge(u, v, g);
+        weightmap[e] = distance;
+    }
+}
+
+void WriteCity(const Graph& g, const WeightMap& weightmap, const std::unordered_map<std::string, Vertex>& stationMap) {
+    std::ofstream file("data\\City.csv");
+
+    for (auto& pair : stationMap) {
+        auto edges = out_edges(pair.second, g);
+        for (auto edge : make_iterator_range(edges)) {
+            Vertex target = boost::target(edge, g);
+            for (const auto& targetPair : stationMap) {
+                if (targetPair.second == target) {
+                    file << pair.first << "," << targetPair.first << "," << weightmap[edge] << std::endl;
+                }
+            }
+        }
+    }
 }
