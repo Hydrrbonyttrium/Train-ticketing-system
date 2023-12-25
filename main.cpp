@@ -121,7 +121,7 @@ int main() {
         Vertex endVertex = stationMap[endStation];
 
         // 计算最短路径
-        std::vector<Vertex> path = dijkstraShortestPath(g, startVertex, endVertex);
+        std::vector<Vertex> path = SearchForCityShortestPath(g, startVertex, endVertex);
 
         // 输出最短路径
         std::cout << "Shortest path from " << startStation << " to " << endStation << ":" << std::endl;
@@ -144,6 +144,6 @@ int main() {
      * 2.清除所有数据结构避免内存泄漏
      * (SqList与LinkedList使用了“资源获取即初始化”（RAII）不需要清理)
     ***************************/
-    
+
     return 0;
 }

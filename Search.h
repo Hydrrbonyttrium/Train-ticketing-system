@@ -10,6 +10,6 @@ typedef boost::adjacency_list<boost::listS, boost::vecS, boost::undirectedS, boo
 typedef boost::graph_traits<Graph>::vertex_descriptor Vertex;
 
 // 声明Dijkstra算法的函数
-std::vector<Vertex> dijkstraShortestPath(const Graph& g, const Vertex& start, const Vertex& goal);
+std::vector<Vertex> SearchForCityShortestPath(const Graph& g, const Vertex& start, const Vertex& goal);
 
 #endif // SEARCH_H

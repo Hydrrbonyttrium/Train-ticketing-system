@@ -3,7 +3,7 @@
 #include <vector>
 #include <limits>
 
-std::vector<Vertex> dijkstraShortestPath(const Graph& g, const Vertex& start, const Vertex& goal) {
+std::vector<Vertex> SearchForCityShortestPath(const Graph& g, const Vertex& start, const Vertex& goal) {
     std::vector<Vertex> predecessors(num_vertices(g)); // 用于存储路径
     std::vector<int> distances(num_vertices(g)); // 用于存储距离
 
