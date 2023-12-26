@@ -20,7 +20,7 @@ typedef boost::property_map<Graph, boost::edge_weight_t>::type WeightMap;
 
 void ReadUser(SqList<User>& userList);
 void ReadTrain(SqList<Train>& TrainList);
-void ReadTrainNunmber(SqList<TrainNumber>& TrainNumberList);
+void ReadTrainNumber(SqList<TrainNumber>& TrainNumberList);
 void WriteUser(SqList<User>& UserList);
 void ReadTicket(LinkedList<Ticket>& TicketList);
 void ReadCity(Graph& g, WeightMap& weightmap, std::unordered_map<std::string, Vertex>& stationMap);

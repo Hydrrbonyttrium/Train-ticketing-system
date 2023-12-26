@@ -9,6 +9,11 @@
 
 using namespace std;
 
+//数据实体定义
+SqList<User> UserList;
+SqList<Train> TrainList;
+SqList<TrainNumber> TrainNumberList;
+User currentUser;
 
 // 函数声明
 void loginMenu();
@@ -30,20 +35,31 @@ void optimalStationQuery();
 // 主函数
 int main() 
 {
+    UserList.InitList();
+    TrainList.InitList();
+    TrainNumberList.InitList();
+    ReadUser(UserList);
     loginMenu();
+    ReadTrain(TrainList);
+    ReadTrainNumber(TrainNumberList);
+    
     return 0;
 }
 
 // 登录菜单
 void loginMenu() {
+    system("cls");
     int choice;
     while (true) {
-        std::cout << "\n铁路票务管理系统\n";
-        std::cout << "1. 普通用户登录\n";
-        std::cout << "2. 管理员登录\n";
-        std::cout << "3. 用户注册\n";
-        std::cout << "4. 退出\n";
-        std::cout << "选择操作 (1-4): ";
+        printf("\t\t|=============================================|\n");
+        printf("\t\t|===            铁路票务管理系统           ===|\n");
+        printf("\t\t|=============================================|\n");
+        printf("\t\t|\t1.普通用户登录                        |\n");
+        printf("\t\t|\t2.管理员登录                          |\n");
+        printf("\t\t|\t3.用户注册                            |\n");
+        printf("\t\t|\t4.退出程序                            |\n");
+        printf("\t\t|=============================================|\n");
+        printf("\t\t请输入要进行的操作(1 - 4)");
         std::cin >> choice;
 
         switch (choice) {
@@ -69,17 +85,22 @@ void loginMenu() {
 //***********普通用户功能***********//
 //普通用户登录菜单
  void loginUser() {
+    system("cls");
     std::string username, password;
     std::cout << "输入用户名: ";
     std::cin >> username;
     std::cout << "输入密码: ";
     std::cin >> password;
-    // TODO: 验证登录逻辑
-    userMenu();
+    // 验证登录逻辑
+    if(Login(UserList,username,password,currentUser))
+        userMenu();
+    else
+        std::cout << "用户名或密码错误" << endl;
 }
 
 // 普通用户主菜单函数
 void userMenu() {
+    system("cls");
     int choice;
     while (true) {
         std::cout << "\n用户菜单:\n";
@@ -120,16 +141,35 @@ void userMenu() {
 
 // 普通用户注册菜单
 void registerUser() {
-    std::string username, password, confirmPassword, email;
-    std::cout << "输入用户名: ";
-    std::cin >> username;
-    std::cout << "设置密码: ";
-    std::cin >> password;
-    std::cout << "确认密码: ";
-    std::cin >> confirmPassword;
-    std::cout << "输入电子邮件（可选）: ";
-    std::cin >> email;
+    int outcome;
+    std::string username, password, name, confirmPassword ,sex, id;
+    do{
+        system("cls");
+        std::cout << "输入用户名: ";
+        std::cin >> username;
+        std::cout << "设置密码: ";
+        std::cin >> password;
+        std::cout << "确认密码: ";
+        std::cin >> confirmPassword;
+        std::cout <<"输入姓名:";
+        std::cin >> name;
+        std::cout << "请输入性别:";
+        std::cin >> sex;
+        std::cout << "输入身份证:";
+        std::cin >> id;
+        outcome= password==confirmPassword?0:1;
+        if(outcome)
+        {
+            std::cout << "两次密码不同,请重新输入" <<endl;
+            system("pause");
+        }
+    }while(outcome);
     // TODO: 注册逻辑
+    User tempUser;
+    tempUser={username,password,name,sex,id,"0",0};
+    Register(UserList,tempUser);
+    std::cout << "注册成功" << endl;
+    system("pause");
     loginUser();
 }
 
@@ -188,11 +228,15 @@ void loginAdmin() {
     std::cout << "输入密码: ";
     std::cin >> adminPassword;
     // TODO: 验证管理员登录逻辑
-    adminMenu();
+    if(Login(UserList,adminUsername,adminPassword,currentUser)&&currentUser.authority)
+        adminMenu();
+    else
+        std::cout << "非管理员用户或用户名或密码错误" << endl;
 }
 
 // 管理员主菜单函数
 void adminMenu() {
+    system("cls");
     int choice;
     while (true) {
         std::cout << "\n管理员菜单:\n";
