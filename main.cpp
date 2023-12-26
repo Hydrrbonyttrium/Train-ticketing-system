@@ -213,7 +213,7 @@ void adminMenu() {
                 manageTrainDetails();
                 break;
             case 3:
-                enterModifyCityInfo();
+                optimalStationQuery();
                 break;
             case 4:
                 // TODO: 实现录入/修改车辆类别信息的函数
@@ -231,7 +231,7 @@ void adminMenu() {
     }
 }
 
-//录入/修改功能（管理员）
+//用户资料管理
 void manageUserDetails() {
     int choice;
     while (true) {
@@ -285,4 +285,13 @@ void manageTrainDetails() {
     }
 }
 
+//修改城市信息
+void enterModifyCityInfo(){
+
+}
+
+//最优站点查询
+void optimalStationQuery(){
+
+}
 //**********************************//

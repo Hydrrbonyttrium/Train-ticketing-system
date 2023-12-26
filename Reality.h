@@ -1,37 +1,31 @@
 #ifndef REALITY_H_INCLUDED
 #define REALITY_H_INCLUDED
 
-#include "Graph.h"
+
 #include <string.h>
 #include "Tree.h"
-
- typedef struct City
- {
-   string name;
-   VNode Station;
- };//Graph
 
 
  typedef struct Ticket
  {
-   string train_number; // 车次
-   string start;        // 起始车站
-   string end;          // 终点车站
-   string seat;
+   std::string train_number; // 车次
+   std::string start;        // 起始车站
+   std::string end;          // 终点车站
+   std::string seat;
    int price;
    int remains;
- };//Linklist
+ }Ticket;//Linklist
 
 
 
  typedef struct User
  {
-    string account;
-    string password;
-    string name;
-    string sex;
-    string id;
-    string tickets;
+    std::string account;
+    std::string password;
+    std::string name;
+    std::string sex;
+    std::string id;
+    std::string tickets;
     int authority;
  }User;//Sqlist
 
@@ -39,21 +33,21 @@
 
  typedef struct Train
  {
-   string train_type;//车次类型（高铁/动车）
-   string train_set;//车组(复兴/和谐)
-   string seat_type;
- };//Sqlist
+   std::string train_type;//车次类型（高铁/动车）
+   std::string train_set;//车组(复兴/和谐)
+   std::string seat_type;
+ }Train;//Sqlist
 
 
  typedef struct TrainNumber
  {
-   string number;
-   string begin;
-   string end;
+   std::string number;
+   std::string begin;
+   std::string end;
    int ticket_number;
    int distance;
    int train_distance;
-   string carriage;
- };//Sqlist
+   std::string carriage;
+ }TrainNumber;//Sqlist
 
 #endif // REALITY_H_INCLUDED
