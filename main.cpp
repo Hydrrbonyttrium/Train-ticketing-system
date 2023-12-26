@@ -9,141 +9,280 @@
 
 using namespace std;
 
-int main() {
-    // 初始化用户表
-    SqList<User> user_list;
-    user_list.InitList();
-    ReadUser(user_list);
 
-    User current_user;
-    /*****************************
-     * 这里实现登录
-     * 将登陆完成的User赋值给current_user
-     * 给后续使用
-    *****************************/
-    // 这里使用一个示例
-    // 注册新用户
-//    User newUser = {"zhangsan", "password123", "New User"};
-//    if (Register(user_list, newUser)) {
-//        std::cout << "注册成功！" << std::endl;
-//    }
+// 函数声明
+void loginMenu();
+void userMenu();
+void adminMenu();
+void loginUser();
+void registerUser();
+void loginAdmin();
+void queryTimetable();
+void queryTicketPrice();
+void purchaseTicket();
+void viewOrders();
+void refundOrChangeTicket();
+void manageUserDetails();
+void manageTrainDetails();
+void enterModifyCityInfo();
+void optimalStationQuery();
 
-    // 用户登录
-    std::string account, password;
-    std::cout << "请输入账号: ";
-    std::cin >> account;
-    std::cout << "请输入密码: ";
-    std::cin >> password;
-
-    if (Login(user_list, account, password, current_user)) {
-        std::cout << "登录成功！欢迎 " << current_user.name << std::endl;
-    } else {
-        std::cout << "登录失败！" << std::endl;
-    }
-
-    //初始化票的链表
-    LinkedList<Ticket> ticket_list;
-    ReadTicket(ticket_list);
-
-    Ticket ticket_to_purchase;
-    /*****************************
-     * 这里实现票的搜索
-     * 将搜索且选中的票赋值给ticket_to_purchase
-    *****************************/
-    // 这里使用一个示例
-//    ticket_to_purchase = ticket_list.GetElem(1);
-
-    // 测试一下购票
-//    if (PurchaseTicket(current_user, ticket_to_purchase)) {
-//        cout << "购票成功" << endl;
-//    } else {
-//        cout << "已加入等候列表中" << endl;
-//    }
-
-    // 测试完成将结果写入
-    // 注意这里要删除一个插入一个
-//    int user_delete_index;
-//    User user_delete_temp;
-//    user_delete_index = user_list.LocateElem(current_user, UserCompare);
-//    user_list.ListDelete(user_delete_index, user_delete_temp);
-//    user_list.ListInsert(user_delete_index, current_user);
-//
-//    WriteUser(user_list);
-
-    Graph g;
-    WeightMap weightmap = get(boost::edge_weight, g);
-    std::unordered_map<std::string, Vertex> stationMap;
-
-    // 读取图数据
-    ReadCity(g, weightmap, stationMap);
-
-    // 显示读取的数据，作为测试
-//    std::cout << "Initial Graph:" << std::endl;
-//    for (auto& pair : stationMap) {
-//        auto edges = out_edges(pair.second, g);
-//        for (auto edge : make_iterator_range(edges)) {
-//            Vertex target = boost::target(edge, g);
-//            for (const auto& targetPair : stationMap) {
-//                if (targetPair.second == target) {
-//                    std::cout << pair.first << " - " << targetPair.first << " : " << weightmap[edge] << std::endl;
-//                }
-//            }
-//        }
-//    }
-
-    // 这里可以对图进行一些修改，比如添加或删除边
-    // 示例：添加一个新的边
-//    std::string newStation1 = "NewStation1";
-//    std::string newStation2 = "NewStation2";
-//    Vertex newU = add_vertex(g);
-//    Vertex newV = add_vertex(g);
-//    stationMap[newStation1] = newU;
-//    stationMap[newStation2] = newV;
-//    Edge newE;
-//    bool inserted;
-//    tie(newE, inserted) = add_edge(newU, newV, g);
-//    weightmap[newE] = 100; // 假设距离为100
-//
-//    // 将修改后的图数据写回文件
-//    WriteCity(g, weightmap, stationMap);
-
-//    std::cout << "Graph modification and writing complete." << std::endl;
-
-    // 测试Dijkstra算法
-    // 选择起点和终点
-    std::string startStation = "Kunshannan Railway Station";
-    std::string endStation = "Nanjingnan Railway Station"; // 示例终点
-
-    // 确保起点和终点都在stationMap中
-    if (stationMap.find(startStation) != stationMap.end() && stationMap.find(endStation) != stationMap.end()) {
-        // 获取起点和终点的顶点
-        Vertex startVertex = stationMap[startStation];
-        Vertex endVertex = stationMap[endStation];
-
-        // 计算最短路径
-        std::vector<Vertex> path = dijkstraShortestPath(g, startVertex, endVertex);
-
-        // 输出最短路径
-        std::cout << "Shortest path from " << startStation << " to " << endStation << ":" << std::endl;
-        for (Vertex v : path) {
-            for (auto& pair : stationMap) {
-                if (pair.second == v) {
-                    std::cout << pair.first << " -> ";
-                    break;
-                }
-            }
-        }
-        std::cout << std::endl;
-    } else {
-        std::cout << "One or both stations not found in the graph." << std::endl;
-    }
-
-    /***************************
-     * 准备退出程序
-     * 1.将所有内容写入数据文件
-     * 2.清除所有数据结构避免内存泄漏
-     * (SqList与LinkedList使用了“资源获取即初始化”（RAII）不需要清理)
-    ***************************/
-
+// 主函数
+int main() 
+{
+    loginMenu();
     return 0;
 }
+
+// 登录菜单
+void loginMenu() {
+    int choice;
+    while (true) {
+        std::cout << "\n铁路票务管理系统\n";
+        std::cout << "1. 普通用户登录\n";
+        std::cout << "2. 管理员登录\n";
+        std::cout << "3. 用户注册\n";
+        std::cout << "4. 退出\n";
+        std::cout << "选择操作 (1-4): ";
+        std::cin >> choice;
+
+        switch (choice) {
+            case 1:
+                loginUser();
+                break;
+            case 2:
+                loginAdmin();
+                break;
+            case 3:
+                registerUser();
+                break;
+            case 4:
+                std::cout << "退出系统.\n";
+                exit(0);
+            default:
+                std::cout << "无效选择，请重试。\n";
+                break;
+        }
+    }
+}
+
+//***********普通用户功能***********//
+//普通用户登录菜单
+ void loginUser() {
+    std::string username, password;
+    std::cout << "输入用户名: ";
+    std::cin >> username;
+    std::cout << "输入密码: ";
+    std::cin >> password;
+    // TODO: 验证登录逻辑
+    userMenu();
+}
+
+// 普通用户主菜单函数
+void userMenu() {
+    int choice;
+    while (true) {
+        std::cout << "\n用户菜单:\n";
+        std::cout << "1. 查询时刻表\n";
+        std::cout << "2. 查询票价和余票\n";
+        std::cout << "3. 购买车票\n";
+        std::cout << "4. 查询个人订单\n";
+        std::cout << "5. 退票/改签\n";
+        std::cout << "6. 退出系统\n";
+        std::cout << "选择操作 (1-6): ";
+        std::cin >> choice;
+
+        switch (choice) {
+            case 1:
+                queryTimetable();
+                break;
+            case 2:
+                queryTicketPrice();
+                break;
+            case 3:
+                purchaseTicket();
+                break;
+            case 4:
+                viewOrders();
+                break;
+            case 5:
+                refundOrChangeTicket();
+                break;
+            case 6:
+                std::cout << "退出用户菜单.\n";
+                return; // 返回到登录界面
+            default:
+                std::cout << "无效选择，请重试。\n";
+                break;
+        }
+    }
+}
+
+// 普通用户注册菜单
+void registerUser() {
+    std::string username, password, confirmPassword, email;
+    std::cout << "输入用户名: ";
+    std::cin >> username;
+    std::cout << "设置密码: ";
+    std::cin >> password;
+    std::cout << "确认密码: ";
+    std::cin >> confirmPassword;
+    std::cout << "输入电子邮件（可选）: ";
+    std::cin >> email;
+    // TODO: 注册逻辑
+    loginUser();
+}
+
+// 查询时刻表
+void queryTimetable() {
+    std::string trainNumberOrStation;
+    std::cout << "\n输入车次或站点: ";
+    std::cin >> trainNumberOrStation;
+    // TODO: 根据输入的车次或站点显示相关时刻表
+}
+
+// 查询票价和余票
+void queryTicketPrice() {
+    std::string trainNumber;
+    std::cout << "\n输入车次: ";
+    std::cin >> trainNumber;
+    // TODO: 根据输入的车次显示票价和余票信息
+}
+
+// 查看个人订单
+void viewOrders() {
+    // 实现查看个人订单逻辑...
+}
+
+// 购买车票
+void purchaseTicket() {
+    std::string trainNumber;
+    std::string seatType;
+    // TODO: 实现购买车票的逻辑
+    // 输入车次、选择座位类型等
+}
+
+// 预售车票
+void purchaseAdvanceTicket() {
+    // 实现预售车票购买逻辑...
+}
+
+// 退票/改签
+void refundOrChangeTicket() {
+    // TODO: 实现退票或改签的逻辑
+    // 显示用户订单，选择进行退票或改签的订单
+}
+
+//**********************************//
+
+
+
+
+
+//***********管理员用户功能**********//
+//管理员用户登录菜单
+void loginAdmin() {
+    std::string adminUsername, adminPassword;
+    std::cout << "输入管理员用户名: ";
+    std::cin >> adminUsername;
+    std::cout << "输入密码: ";
+    std::cin >> adminPassword;
+    // TODO: 验证管理员登录逻辑
+    adminMenu();
+}
+
+// 管理员主菜单函数
+void adminMenu() {
+    int choice;
+    while (true) {
+        std::cout << "\n管理员菜单:\n";
+        std::cout << "1. 用户资料管理\n";
+        std::cout << "2. 车次信息管理\n";
+        std::cout << "3. 录入/修改城市信息\n";
+        std::cout << "4. 录入/修改车辆类别信息\n";
+        std::cout << "5. 站间最优查询管理\n";
+        std::cout << "6. 退出系统\n";
+        std::cout << "选择操作 (1-6): ";
+        std::cin >> choice;
+
+        switch (choice) {
+            case 1:
+                manageUserDetails();
+                break;
+            case 2:
+                manageTrainDetails();
+                break;
+            case 3:
+                enterModifyCityInfo();
+                break;
+            case 4:
+                // TODO: 实现录入/修改车辆类别信息的函数
+                break;
+            case 5:
+                optimalStationQuery();
+                break;
+            case 6:
+                std::cout << "退出管理员菜单.\n";
+                return; // 返回到登录界面
+            default:
+                std::cout << "无效选择，请重试。\n";
+                break;
+        }
+    }
+}
+
+//录入/修改功能（管理员）
+void manageUserDetails() {
+    int choice;
+    while (true) {
+        std::cout << "\n管理用户资料:\n";
+        std::cout << "1. 查看用户列表\n";
+        std::cout << "2. 选择用户进行编辑\n";
+        std::cout << "3. 返回上一级\n";
+        std::cout << "选择操作 (1-3): ";
+        std::cin >> choice;
+
+        switch (choice) {
+            case 1:
+                // TODO: 实现查看用户列表的逻辑
+                break;
+            case 2:
+                // TODO: 实现选择并编辑用户的逻辑
+                break;
+            case 3:
+                return; // 返回管理员菜单
+            default:
+                std::cout << "无效选择，请重试。\n";
+                break;
+        }
+    }
+}
+
+//管理车次信息
+void manageTrainDetails() {
+    int choice;
+    while (true) {
+        std::cout << "\n管理车次信息:\n";
+        std::cout << "1. 查看车次列表\n";
+        std::cout << "2. 选择车次进行编辑\n";
+        std::cout << "3. 返回上一级\n";
+        std::cout << "选择操作 (1-3): ";
+        std::cin >> choice;
+
+        switch (choice) {
+            case 1:
+                // TODO: 实现查看车次列表的逻辑
+                break;
+            case 2:
+                // TODO: 实现选择并编辑车次的逻辑
+                break;
+            case 3:
+                return; // 返回管理员菜单
+            default:
+                std::cout << "无效选择，请重试。\n";
+                break;
+        }
+    }
+}
+
+//**********************************//
