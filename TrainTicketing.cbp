@@ -34,8 +34,6 @@
 		</Compiler>
 		<Unit filename="DataEntry.cpp" />
 		<Unit filename="DataEntry.h" />
-		<Unit filename="Graph.cpp" />
-		<Unit filename="Graph.h" />
 		<Unit filename="LinkList.h" />
 		<Unit filename="LinkList.tpp" />
 		<Unit filename="LinkQueue.cpp" />
