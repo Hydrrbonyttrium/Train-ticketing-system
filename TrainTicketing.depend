@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1703592597 source:e:\projects\trainticketing\dataentry.cpp
+1703774773 source:e:\projects\trainticketing\dataentry.cpp
 	"DataEntry.h"
 
 1703597411 e:\projects\trainticketing\dataentry.h
@@ -48,7 +48,7 @@
 	<iostream>
 	"LinkList.tpp"
 
-1703573173 e:\projects\trainticketing\linklist.tpp
+1703776172 e:\projects\trainticketing\linklist.tpp
 
 1703573173 e:\projects\trainticketing\linkqueue.h
 	"Public1.h"
@@ -65,18 +65,20 @@
 	"Reality.h"
 	"SqList.h"
 
-1703771215 source:e:\projects\trainticketing\search.cpp
+1703775882 source:e:\projects\trainticketing\search.cpp
 	"Search.h"
+
+1703775882 e:\projects\trainticketing\search.h
+	"Public1.h"
+	"LinkList.h"
 	"Reality.h"
+	<boost/graph/adjacency_list.hpp>
 	<boost/graph/dijkstra_shortest_paths.hpp>
+	<string>
+	<unordered_map>
 	<vector>
 	<limits>
 	<iostream>
-
-1703771215 e:\projects\trainticketing\search.h
-	<boost/graph/adjacency_list.hpp>
-	<string>
-	<unordered_map>
 
 1703573173 source:e:\projects\trainticketing\ticket.cpp
 	"Ticket.h"
@@ -86,7 +88,7 @@
 	"Reality.h"
 	"LinkList.h"
 
-1703771215 source:e:\projects\trainticketing\main.cpp
+1703775977 source:e:\projects\trainticketing\main.cpp
 	"Public1.h"
 	"Reality.h"
 	"Search.h"

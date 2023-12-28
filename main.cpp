@@ -14,6 +14,7 @@ SqList<User> UserList;
 SqList<Train> TrainList;
 SqList<TrainNumber> TrainNumberList;
 User currentUser;
+LinkedList<Ticket> TicketList;
 
 // 函数声明
 void loginMenu();
@@ -39,6 +40,7 @@ int main()
     TrainList.InitList();
     TrainNumberList.InitList();
     ReadUser(UserList);
+    ReadTicket(TicketList);
     loginMenu();
     ReadTrain(TrainList);
     ReadTrainNumber(TrainNumberList);
@@ -178,12 +180,19 @@ void registerUser() {
 void queryTimetable() {
     std::string start_stop;
     std::string end_stop;
-    std::cout << "输入出发站点: ";
-    std::cin >> start_stop;
-    std::cout << "输入到达站点: ";
-    std::cin >> end_stop;
 
-    // TODO: 根据输入的车次或站点显示相关时刻表
+    std::cout << "输入出发站点: ";
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // 忽略之前的输入
+    std::getline(std::cin, start_stop); // 使用 getline 读取包含空格的字符串
+
+    std::cout << "输入到达站点: ";
+    std::getline(std::cin, end_stop); // 同样使用 getline
+
+    if (Timetable(TicketList, start_stop, end_stop)) {
+        std::cout << "查询结束" << std::endl;
+    } else {
+        std::cout << "查询失败: 未找到匹配的车次" << std::endl;
+    }
 }
 
 // 查询票价和余票

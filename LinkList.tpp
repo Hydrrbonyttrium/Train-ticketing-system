@@ -65,7 +65,6 @@ int LinkedList<T>::ListLength() const {
 template <typename T>
 ListNode<T>* LinkedList<T>::GetElemPtr(int i) {
     if (i < 0 || i > ListLength()) {
-        std::cerr << "获取元素位置无效\n";
         return nullptr;
     }
 
