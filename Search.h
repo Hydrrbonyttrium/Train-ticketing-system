@@ -1,6 +1,6 @@
 #ifndef SEARCH_H
 #define SEARCH_H
-
+#define MAX_TIMETABLE_SIZE 100
 #include <boost/graph/adjacency_list.hpp>
 #include <string>
 #include <unordered_map>

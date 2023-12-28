@@ -41,13 +41,16 @@
 
  typedef struct TrainNumber
  {
-   std::string number;
+   std::string timetable;
    std::string begin;
    std::string end;
+   std::string number;
    int ticket_number;
    int distance;
    int train_distance;
+
    std::string carriage;
  }TrainNumber;//Sqlist
+
 
 #endif // REALITY_H_INCLUDED
