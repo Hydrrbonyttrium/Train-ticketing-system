@@ -42,9 +42,20 @@ int main()
     ReadUser(UserList);
     ReadTicket(TicketList);
     loginMenu();
-    ReadTrain(TrainList);
-    ReadTrainNumber(TrainNumberList);
+    // ReadTrain(TrainList);
+    // ReadTrainNumber(TrainNumberList);
 
+    // 退出程序
+    // 注意这里要删除一个插入一个
+    // 注意这里要删除一个插入一个
+    int user_delete_index;
+    User user_delete_temp;
+    user_delete_index = UserList.LocateElem(currentUser, UserCompare);
+    UserList.ListDelete(user_delete_index, user_delete_temp);
+    UserList.ListInsert(user_delete_index, currentUser);
+
+    WriteUser(UserList);
+    WriteTicket(TicketList);
     return 0;
 }
 
@@ -231,8 +242,19 @@ void viewOrders() {
 void purchaseTicket() {
     std::string trainNumber;
     std::string seatType;
-    // TODO: 实现购买车票的逻辑
-    // 输入车次、选择座位类型等
+
+    cout << "请输入车次：";
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // 忽略之前的输入
+    std::getline(std::cin, trainNumber); // 使用 getline 读取包含空格的字符串
+    cout << "请输入座位类型（first）：";
+    std::getline(std::cin, seatType); // 同样使用 getline
+    Ticket tempfoundTicket = FindTicketByTrainNumberAndSeat(TicketList, trainNumber, seatType);
+    if (!tempfoundTicket.train_number.empty()) { // 检查是否找到了票
+        std::cout << "找到车票 正在购买" << std::endl;
+        PurchaseTicket(currentUser, tempfoundTicket);
+    } else {
+        std::cout << "未找到车次为 " << trainNumber << " 的票信息" << std::endl;
+    }
 }
 
 // 预售车票

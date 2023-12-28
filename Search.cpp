@@ -60,3 +60,13 @@ Ticket FindTicketByTrainNumber(LinkedList<Ticket>& TicketList, const std::string
     }
     return Ticket(); // 如果没有找到匹配的票，返回一个空的 Ticket 对象
 }
+
+Ticket FindTicketByTrainNumberAndSeat(LinkedList<Ticket>& TicketList, const std::string& trainNumber, const std::string& SeatType) {
+    for (int i = 0; TicketList.GetElemPtr(i) != nullptr; ++i) {
+        Ticket tempTicket = TicketList.GetElem(i);
+        if (tempTicket.train_number == trainNumber && tempTicket.seat == SeatType) {
+            return tempTicket; // 找到匹配的票，返回该票
+        }
+    }
+    return Ticket(); // 如果没有找到匹配的票，返回一个空的 Ticket 对象
+}
