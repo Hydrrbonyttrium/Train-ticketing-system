@@ -197,8 +197,18 @@ void queryTimetable() {
 
 // 查询票价和余票
 void queryTicketPrice() {
+    std::string trainNumber;
+    std::cout << "输入车次号: ";
+    std::cin >> trainNumber;
 
-    // TODO: 根据输入的车次显示票价和余票信息
+    Ticket foundTicket = FindTicketByTrainNumber(TicketList, trainNumber);
+    if (!foundTicket.train_number.empty()) { // 检查是否找到了票
+        std::cout << "车次: " << foundTicket.train_number
+                  << ", 票价: " << foundTicket.price
+                  << ", 剩余票数: " << foundTicket.remains << std::endl;
+    } else {
+        std::cout << "未找到车次为 " << trainNumber << " 的票信息" << std::endl;
+    }
 }
 
 // 查看个人订单

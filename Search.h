@@ -17,4 +17,5 @@ typedef boost::graph_traits<Graph>::vertex_descriptor Vertex;
 // 声明Dijkstra算法的函数
 std::vector<Vertex> dijkstraShortestPath(const Graph& g, const Vertex& start, const Vertex& goal);
 Status Timetable(LinkedList<Ticket>& TicketList, const std::string& fromStation, const std::string& toStation);
+Ticket FindTicketByTrainNumber(LinkedList<Ticket>& TicketList, const std::string& trainNumber);
 #endif // SEARCH_H

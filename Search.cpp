@@ -50,3 +50,13 @@ Status Timetable(LinkedList<Ticket>& TicketList, const std::string& fromStation,
     }
     return OK;
 }
+
+Ticket FindTicketByTrainNumber(LinkedList<Ticket>& TicketList, const std::string& trainNumber) {
+    for (int i = 0; TicketList.GetElemPtr(i) != nullptr; ++i) {
+        Ticket tempTicket = TicketList.GetElem(i);
+        if (tempTicket.train_number == trainNumber) {
+            return tempTicket; // 找到匹配的票，返回该票
+        }
+    }
+    return Ticket(); // 如果没有找到匹配的票，返回一个空的 Ticket 对象
+}
