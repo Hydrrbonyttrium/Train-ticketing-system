@@ -213,7 +213,18 @@ void queryTicketPrice() {
 
 // 查看个人订单
 void viewOrders() {
-    // 实现查看个人订单逻辑...
+    User tempUser = currentUser;
+    string tempCurrentUserTicket = tempUser.tickets;
+    cout << "该用户拥有票：" << endl;
+    // 遍历用户拥有的票，并在遇到'/'字符时换行打印
+    for (char ch : tempUser.tickets) {
+        if (ch == '/') {
+            std::cout << std::endl;
+        } else {
+            std::cout << ch;
+        }
+    }
+    std::cout << std::endl;
 }
 
 // 购买车票
