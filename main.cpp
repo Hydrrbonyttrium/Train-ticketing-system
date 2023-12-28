@@ -33,7 +33,7 @@ void enterModifyCityInfo();
 void optimalStationQuery();
 
 // 主函数
-int main() 
+int main()
 {
     UserList.InitList();
     TrainList.InitList();
@@ -42,7 +42,7 @@ int main()
     loginMenu();
     ReadTrain(TrainList);
     ReadTrainNumber(TrainNumberList);
-    
+
     return 0;
 }
 
@@ -176,17 +176,19 @@ void registerUser() {
 
 // 查询时刻表
 void queryTimetable() {
-    std::string trainNumberOrStation;
-    std::cout << "\n输入车次或站点: ";
-    std::cin >> trainNumberOrStation;
+    std::string start_stop;
+    std::string end_stop;
+    std::cout << "输入出发站点: ";
+    std::cin >> start_stop;
+    std::cout << "输入到达站点: ";
+    std::cin >> end_stop;
+
     // TODO: 根据输入的车次或站点显示相关时刻表
 }
 
 // 查询票价和余票
 void queryTicketPrice() {
-    std::string trainNumber;
-    std::cout << "\n输入车次: ";
-    std::cin >> trainNumber;
+
     // TODO: 根据输入的车次显示票价和余票信息
 }
 

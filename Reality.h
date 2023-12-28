@@ -14,6 +14,8 @@
    std::string seat;
    int price;
    int remains;
+   std::string departure_time;    // 发车时间
+   std::string arrival_time;
  }Ticket;//Linklist
 
 

@@ -1,0 +1,98 @@
+# depslib dependency file v1.0
+1703592597 source:e:\projects\trainticketing\dataentry.cpp
+	"DataEntry.h"
+
+1703597411 e:\projects\trainticketing\dataentry.h
+	"Sqlist.h"
+	"LinkList.h"
+	"LinkQueue.h"
+	<fstream>
+	<sstream>
+	<boost/graph/adjacency_list.hpp>
+	<string>
+	<unordered_map>
+
+1703597411 e:\projects\trainticketing\sqlist.h
+	"public1.h"
+	"Reality.h"
+	"SqList.tpp"
+
+1703592597 e:\projects\trainticketing\public1.h
+	<string.h>
+	<ctype.h>
+	<malloc.h>
+	<limits.h>
+	<stdio.h>
+	<stdlib.h>
+	<io.h>
+	<math.h>
+	<process.h>
+	<iostream>
+	<fstream>
+	<sstream>
+	<string.h>
+
+1703774528 e:\projects\trainticketing\reality.h
+	<string.h>
+	"Tree.h"
+
+1703573173 e:\projects\trainticketing\tree.h
+	<iostream>
+	"Tree.tpp"
+
+1703573173 e:\projects\trainticketing\tree.tpp
+
+1703573173 e:\projects\trainticketing\sqlist.tpp
+
+1703573173 e:\projects\trainticketing\linklist.h
+	<iostream>
+	"LinkList.tpp"
+
+1703573173 e:\projects\trainticketing\linklist.tpp
+
+1703573173 e:\projects\trainticketing\linkqueue.h
+	"Public1.h"
+
+1703573173 source:e:\projects\trainticketing\linkqueue.cpp
+	"LinkQueue.h"
+
+1703573173 source:e:\projects\trainticketing\login.cpp
+	"Login.h"
+	<iostream>
+
+1703573173 e:\projects\trainticketing\login.h
+	"Public1.h"
+	"Reality.h"
+	"SqList.h"
+
+1703771215 source:e:\projects\trainticketing\search.cpp
+	"Search.h"
+	"Reality.h"
+	<boost/graph/dijkstra_shortest_paths.hpp>
+	<vector>
+	<limits>
+	<iostream>
+
+1703771215 e:\projects\trainticketing\search.h
+	<boost/graph/adjacency_list.hpp>
+	<string>
+	<unordered_map>
+
+1703573173 source:e:\projects\trainticketing\ticket.cpp
+	"Ticket.h"
+
+1703573173 e:\projects\trainticketing\ticket.h
+	"Public1.h"
+	"Reality.h"
+	"LinkList.h"
+
+1703771215 source:e:\projects\trainticketing\main.cpp
+	"Public1.h"
+	"Reality.h"
+	"Search.h"
+	"Ticket.h"
+	"DataEntry.h"
+	"Login.h"
+	"Sqlist.h"
+	"LinkList.h"
+

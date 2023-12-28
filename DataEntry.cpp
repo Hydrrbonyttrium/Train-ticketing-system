@@ -87,12 +87,17 @@ void ReadTicket(LinkedList<Ticket>& TicketList) {
         getline(iss, tempTicket.end, ',');
         getline(iss, tempTicket.seat, ',');
 
-        string price;
+        std::string price, remains;
         getline(iss, price, ',');
         tempTicket.price = std::stoi(price);
-        iss >> tempTicket.remains;
 
-        // 将读取的用户添加到列表中
+        getline(iss, remains, ',');
+        tempTicket.remains = std::stoi(remains);
+
+        getline(iss, tempTicket.departure_time, ',');
+        getline(iss, tempTicket.arrival_time);
+
+        // 将读取的票务信息添加到列表中
         TicketList.ListInsert(1, tempTicket);
     }
 
@@ -171,14 +176,22 @@ void WriteTicket(LinkedList<Ticket>& TicketList) {
         std::cerr << "无法打开文件进行写入" << std::endl;
         return;
     }
-    int i=0;
-    while(TicketList.GetElemPtr(i))
-    {
-        Ticket tempTicket;
-        tempTicket=TicketList.GetElem(i);
-        fprintf(file,"%s,%s,%s,%s,%d,%d\n",tempTicket.train_number,tempTicket.start,tempTicket.end,tempTicket.seat,&tempTicket.price,&tempTicket.remains);
+
+    int i = 0;
+    while (TicketList.GetElemPtr(i)) {
+        Ticket tempTicket = TicketList.GetElem(i);
+        fprintf(file, "%s,%s,%s,%s,%d,%d,%s,%s\n",
+                tempTicket.train_number.c_str(),
+                tempTicket.start.c_str(),
+                tempTicket.end.c_str(),
+                tempTicket.seat.c_str(),
+                tempTicket.price,
+                tempTicket.remains,
+                tempTicket.departure_time.c_str(),
+                tempTicket.arrival_time.c_str());
         i++;
     }
+
     fclose(file);
 }
 
