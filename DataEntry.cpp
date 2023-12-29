@@ -53,28 +53,33 @@ void ReadTrain(SqList<Train>& TrainList) {
 }
 
 void ReadTrainNumber(SqList<TrainNumber>& TrainNumberList) {
-    FILE* file= fopen("data\\TrainNumber.csv","r");
+    std::ifstream file("data\\TrainNumber.csv");
+    if (!file.is_open()) {
+        std::cerr << "无法打开文件" << std::endl;
+        exit(EXIT_FAILURE);
+    }
 
-    while (file) {
+    std::string line;
+    while (getline(file, line)) {
+        std::istringstream iss(line);
         TrainNumber tempTrainNumber;
 
         // 读取并分割每行的字段
-            fscanf(file,"%s,%s,%s,%d,%d,%d,%d,%s\n",
-            tempTrainNumber.number,
-            tempTrainNumber.begin,
-            tempTrainNumber.end,
-            &tempTrainNumber.price,
-            &tempTrainNumber.remains,
-            &tempTrainNumber.distance,
-            &tempTrainNumber.train_distance,
-            tempTrainNumber.carriage);
+        getline(iss, tempTrainNumber.number, ',');
+        getline(iss, tempTrainNumber.begin, ',');
+        getline(iss, tempTrainNumber.end, ',');
+        getline(iss, tempTrainNumber.price, ',');
+        getline(iss, tempTrainNumber.remains, ',');
+        getline(iss, tempTrainNumber.distance, ',');
+        getline(iss, tempTrainNumber.train_distance, ',');
+        iss >> tempTrainNumber.carriage;
 
 
         // 将读取的用户添加到列表中
         TrainNumberList.ListInsert(TrainNumberList.GetLength() + 1, tempTrainNumber);
     }
 
-    fclose(file);
+    file.close();
 }
 
 void ReadTicket(LinkedList<Ticket>& TicketList) {

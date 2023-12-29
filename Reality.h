@@ -43,14 +43,13 @@
 
  typedef struct TrainNumber
  {
-   
    std::string number;
    std::string begin;
    std::string end;
-   int price;
-   int remains;
-   int distance;//总路程
-   int train_distance;//总车程
+   std::string price;
+   std::string remains;
+   std::string distance;//总路程
+   std::string train_distance;//总车程
    std::string carriage;
  }TrainNumber;//Sqlist
 
