@@ -13,6 +13,7 @@ using namespace std;
 SqList<User> UserList;
 SqList<Train> TrainList;
 SqList<TrainNumber> TrainNumberList;
+Tree<string> carrige;
 
 Graph CityGraph;
 WeightMap weightmap;
