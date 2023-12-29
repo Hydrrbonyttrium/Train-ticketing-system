@@ -87,7 +87,7 @@ void loginMenu() {
                 break;
             case 4:
                 std::cout << "退出系统.\n";
-                exit(0);
+                return; // 返回 开始退出程序
             default:
                 std::cout << "无效选择，请重试。\n";
                 break;
@@ -246,7 +246,7 @@ void purchaseTicket() {
     cout << "请输入车次：";
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // 忽略之前的输入
     std::getline(std::cin, trainNumber); // 使用 getline 读取包含空格的字符串
-    cout << "请输入座位类型（first）：";
+    cout << "请输入座位类型（First Class/Second Class）：";
     std::getline(std::cin, seatType); // 同样使用 getline
     Ticket tempfoundTicket = FindTicketByTrainNumberAndSeat(TicketList, trainNumber, seatType);
     if (!tempfoundTicket.train_number.empty()) { // 检查是否找到了票
