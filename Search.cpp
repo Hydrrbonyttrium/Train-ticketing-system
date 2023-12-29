@@ -40,15 +40,30 @@ Status Timetable(LinkedList<Ticket>& TicketList, const std::string& fromStation,
         return a.departure_time < b.departure_time;
     });
 
-    // 打印或返回结果
+    // 打印表头
+    std::cout << std::left
+              << std::setw(14) << "Train Number" << " | "
+              << std::setw(19) << "Departure Time" << " | "
+              << std::setw(19) << "Arrival Time" << " | "
+              << std::setw(14) << "Seat" << " | "
+              << std::setw(9) << "Price" << " |"
+              << std::endl;
+
+    // 输出分割线
+    std::cout << std::string(88, '-') << std::endl;
+
+    // 打印每行的结果
     for (const auto& ticket : matchingTickets) {
-        std::cout << "车次：" << ticket.train_number
-                  << ", 离开时间： " << ticket.departure_time
-                  << ", 到达时间： " << ticket.arrival_time
-                  << ", 座位等级： " << ticket.seat
-                  << ", 价格：" << ticket.price << std::endl;
+        std::cout << std::left
+                  << std::setw(14) << ticket.train_number << " | "
+                  << std::setw(19) << ticket.departure_time << " | "
+                  << std::setw(19) << ticket.arrival_time << " | "
+                  << std::setw(14) << ticket.seat << " | "
+                  << std::setw(9) << ticket.price << " |"
+                  << std::endl;
     }
-    return OK;
+
+    return matchingTickets.empty() ? ERROR : OK;
 }
 
 Ticket FindTicketByTrainNumber(LinkedList<Ticket>& TicketList, const std::string& trainNumber) {

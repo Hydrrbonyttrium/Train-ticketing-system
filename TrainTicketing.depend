@@ -66,10 +66,10 @@
 	"Reality.h"
 	"SqList.h"
 
-1703777604 source:e:\projects\trainticketing\search.cpp
+1703820579 source:e:\projects\trainticketing\search.cpp
 	"Search.h"
 
-1703777864 e:\projects\trainticketing\search.h
+1703820216 e:\projects\trainticketing\search.h
 	"Public1.h"
 	"LinkList.h"
 	"Reality.h"
@@ -80,6 +80,7 @@
 	<vector>
 	<limits>
 	<iostream>
+	<iomanip>
 
 1703573173 source:e:\projects\trainticketing\ticket.cpp
 	"Ticket.h"
@@ -89,7 +90,7 @@
 	"Reality.h"
 	"LinkList.h"
 
-1703818298 source:e:\projects\trainticketing\main.cpp
+1703820228 source:e:\projects\trainticketing\main.cpp
 	"Public1.h"
 	"Reality.h"
 	"Search.h"

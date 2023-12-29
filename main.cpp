@@ -102,6 +102,7 @@ void loginMenu() {
 
 // 普通用户登录菜单
 void loginUser() {
+    SetConsoleSize(80, 20);
     system("cls");
     std::string username, password;
 
@@ -109,7 +110,7 @@ void loginUser() {
     std::cout << "\t\t╔══════════════════════════════════════╗\n";
     std::cout << "\t\t║      欢迎使用铁路票务管理系统       ║\n";
     std::cout << "\t\t╠══════════════════════════════════════╣\n";
-    std::cout << "\t\t║            用户登录菜单              ║\n";
+    std::cout << "\t\t║            用户登录菜单               ║\n";
     std::cout << "\t\t╚══════════════════════════════════════╝\n";
 
     std::cout << "输入用户名: ";
@@ -128,6 +129,7 @@ void loginUser() {
 
 // 用户主菜单函数
 void userMenu() {
+    SetConsoleSize(80, 20);
     system("cls");
     int choice;
     while (true) {
@@ -176,6 +178,7 @@ void userMenu() {
 
 // 普通用户注册菜单
 void registerUser() {
+    SetConsoleSize(80, 20);
     int outcome;
     std::string username, password, name, confirmPassword, sex, id;
 
@@ -221,6 +224,7 @@ void registerUser() {
 
 // 查询时刻表
 void queryTimetable() {
+    SetConsoleSize(100, 60);
     std::string start_stop;
     std::string end_stop;
 
@@ -236,10 +240,21 @@ void queryTimetable() {
     } else {
         std::cout << "查询失败: 未找到匹配的车次" << std::endl;
     }
+    while (TRUE) {
+        char result;
+        std::cout << "按q结束查询：";
+        std::cin >> result;
+        if (result == 'q'){
+            SetConsoleSize(80, 20);
+            system("cls");
+            break;
+        }
+    }
 }
 
 // 查询票价和余票
 void queryTicketPrice() {
+    SetConsoleSize(80, 20);
     std::string trainNumber;
     std::cout << "输入车次号: ";
     std::cin >> trainNumber;
@@ -256,6 +271,7 @@ void queryTicketPrice() {
 
 // 查看个人订单
 void viewOrders() {
+    SetConsoleSize(80, 20);
     User tempUser = currentUser;
     string tempCurrentUserTicket = tempUser.tickets;
     cout << "该用户拥有票：" << endl;
@@ -272,6 +288,7 @@ void viewOrders() {
 
 // 购买车票
 void purchaseTicket() {
+    SetConsoleSize(80, 20);
     std::string trainNumber;
     std::string seatType;
 
