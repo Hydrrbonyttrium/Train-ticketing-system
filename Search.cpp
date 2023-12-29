@@ -36,10 +36,10 @@ Status Timetable(LinkedList<Ticket>& TicketList, const std::string& fromStation,
         }
     }
 
-    // 按发车时间对票进行排序
-    std::sort(matchingTickets.begin(), matchingTickets.end(), [](const Ticket& a, const Ticket& b) {
-        return a.departure_time < b.departure_time;
-    });
+    // 使用自己的快速排序方法
+    if (!matchingTickets.empty()) {
+        quickSort(matchingTickets, 0, matchingTickets.size() - 1);
+    }
 
     // 打印表头
     std::cout << std::left
@@ -86,3 +86,26 @@ Ticket FindTicketByTrainNumberAndSeat(LinkedList<Ticket>& TicketList, const std:
     }
     return Ticket(); // 如果没有找到匹配的票，返回一个空的 Ticket 对象
 }
+
+void quickSort(std::vector<Ticket>& tickets, int low, int high) {
+    if (low < high) {
+        int pivot = partition(tickets, low, high);
+        quickSort(tickets, low, pivot - 1);
+        quickSort(tickets, pivot + 1, high);
+    }
+}
+
+int partition(std::vector<Ticket>& tickets, int low, int high) {
+    Ticket pivot = tickets[high];
+    int i = (low - 1);
+
+    for (int j = low; j <= high - 1; j++) {
+        if (tickets[j].departure_time < pivot.departure_time) {
+            i++;
+            std::swap(tickets[i], tickets[j]);
+        }
+    }
+    std::swap(tickets[i + 1], tickets[high]);
+    return (i + 1);
+}
+
