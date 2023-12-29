@@ -41,8 +41,8 @@ void queryInterCityPath();
 void SetConsoleSize(int cols, int lines);
 void viewUserList(SqList<User>& UserList);
 void modifyUser(SqList<User>& UserList);
-void viewTrainList(SqList<TrainNumber>& TrainNumberList);
-void modifyTrain(SqList<TrainNumber>& TrainNumberList);
+void viewTrainNumberList(SqList<TrainNumber>& TrainNumberList);
+void modifyTrainNumberList(SqList<TrainNumber>& TrainNumberList);
 std::string getCityName(const Vertex& v);
 int getEdgeWeight(const Vertex& v1, const Vertex& v2, WeightMap& weightmap);
 // 主函数
@@ -77,10 +77,11 @@ int main()
 
 // 登录菜单
 void loginMenu() {
-    system("cls");
+    
     SetConsoleSize(80, 20); // 控制窗口大小
     int choice;
     while (true) {
+        system("cls");
         printf("\n\n\n\n\n\n");
         printf("\t\t|=============================================|\n");
         printf("\t\t|===            铁路票务管理系统           ===|\n");
