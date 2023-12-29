@@ -40,6 +40,7 @@ void optimalStationQuery();
 void queryInterCityPath();
 void SetConsoleSize(int cols, int lines);
 void viewUserList(SqList<User>& UserList);
+void modifyUser(SqList<User>& UserList);
 std::string getCityName(const Vertex& v);
 int getEdgeWeight(const Vertex& v1, const Vertex& v2, WeightMap& weightmap);
 // 主函数
@@ -467,6 +468,7 @@ void manageUserDetails() {
                 break;
             case 2:
                 // TODO: 实现选择并编辑用户的逻辑
+                modifyUser(UserList);
                 break;
             case 3:
                 return; // 返回管理员菜单
@@ -476,7 +478,6 @@ void manageUserDetails() {
         }
     }
 }
-
 
 //查看用户信息
 void viewUserList(SqList<User>& UserList){
@@ -502,6 +503,38 @@ void viewUserList(SqList<User>& UserList){
                 << std::setw(18) << currentUser.id << " | "
                 << std::setw(20) << currentUser.tickets << " | "
                 << std::setw(14) << currentUser.authority <<endl;
+    }
+    system("pause");
+}
+
+void modifyUser(SqList<User>& UserLsit){
+    string account;
+    system("cls");
+    std::cout << "请输入你想找的用户名:";
+    std::cin >> account;
+    std::cout << "输入修改后的用户资料"<<endl;
+    for(int i = 0 ;i <= UserList.GetLength(); i++ ){
+        User currentUser;
+        UserList.GetElem(i,currentUser);
+        if(currentUser.account == account)
+        {
+            UserList.ListDelete(i,currentUser);
+            std::cout << "用户名:";
+            std::cin >> currentUser.account;
+            std::cout << "密码:";
+            std::cin >> currentUser.password;
+            std::cout << "姓名:";
+            std::cin >> currentUser.name;
+            std::cout <<"性别:";
+            std::cin >>currentUser.sex;
+            std::cout <<"身份证:";
+            std::cin >> currentUser.id;
+            std::cout <<"订单:";
+            std::cin >> currentUser.tickets;
+            std::cout <<"权限:";
+            std::cin >> currentUser.authority;
+            UserList.ListInsert(i,currentUser);
+        }
     }
     system("pause");
 }
