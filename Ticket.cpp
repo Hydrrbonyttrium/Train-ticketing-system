@@ -21,7 +21,34 @@ Status PurchaseTicket(User &user, Ticket &ticket) {
     }
 }
 
-Status EnqueueWaitingList(const std::string& trainNumber) {
+Status RefundTicket(User &user, LinkedList<Ticket>& TicketList, const std::string& trainNumber) {
+    // 先搜索一下
+    int i;
+    Ticket tempTicket;
+    Ticket tempTicketForDel;
+    for (i = 1; TicketList.GetElemPtr(i) != nullptr; ++i) {
+        tempTicket = TicketList.GetElem(i);
+        if (tempTicket.train_number == trainNumber) {
+            break;
+        }
+    }
+    if (i > TicketList.ListLength()) return ERROR; // 未找到 返回
+    tempTicket.remains++; // 实现票数增加
+    TicketList.ListDelete(i, tempTicketForDel);
+    TicketList.ListInsert(i, tempTicket); // 删一个添加一个
+
+    size_t foundPos = user.tickets.find(trainNumber);
+    if (foundPos != std::string::npos) {
+        // 找到了子字符串
+        user.tickets.erase(foundPos, trainNumber.length());
+        return OK;
+    } else {
+        // 未找到子字符串
+        return ERROR;
+    }
+}
+
+Status EnqueueWaitingList(User &user, Ticket &ticket) {
     // 将乘客加入到等待列表中
 }
 
@@ -29,9 +56,3 @@ Status ProcessWaitingList() {
     // 处理等待列表，当有退票时分配票给等待列表中的乘客
 }
 
-Status RefundTicket(LinkedList<Ticket>& ticketList, const std::string& ticketID) {
-    // 实现退票逻辑
-    // 根据 ticketID 查找并修改车票信息
-    // 根据退票时间计算手续费
-    // 更新车次的剩余票数
-}

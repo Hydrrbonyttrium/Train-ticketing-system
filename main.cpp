@@ -84,7 +84,7 @@ int main()
 
 // 登录菜单
 void loginMenu() {
-    
+
     SetConsoleSize(80, 20); // 控制窗口大小
     int choice;
     while (true) {
@@ -400,8 +400,33 @@ void purchaseAdvanceTicket() {
 
 // 退票/改签
 void refundOrChangeTicket() {
-    // TODO: 实现退票或改签的逻辑
-    // 显示用户订单，选择进行退票或改签的订单
+    SetConsoleSize(80, 20);
+    system("cls");
+    std::cout << "\t\t╔══════════════════════════════════════╗\n";
+    std::cout << "\t\t║      欢迎使用铁路票务管理系统        ║\n";
+    std::cout << "\t\t╠══════════════════════════════════════╣\n";
+    std::cout << "\t\t║            退票功能菜单              ║\n";
+    std::cout << "\t\t╚══════════════════════════════════════╝\n";
+
+    viewOrders(); // 先展示一下个人订单
+    std::cout << "请输入要退的车次: ";
+    std::string trainNumberRefund;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::getline(std::cin, trainNumberRefund);
+    RefundTicket(currentUser, TicketList, trainNumberRefund);
+    std::cout << "已退票 目前票有：" << endl;
+    viewOrders(); // 再展示一下个人订单
+
+     while (TRUE) {
+        char result;
+        std::cout << "按q结束退单：";
+        std::cin >> result;
+        if (result == 'q') {
+            SetConsoleSize(80, 20);
+            system("cls");
+            break;
+        }
+    }
 }
 
 //**********************************//
@@ -428,7 +453,7 @@ void loginAdmin() {
 
 // 管理员主菜单函数
 void adminMenu() {
-    
+
     int choice;
     while (true) {
         system("cls");
@@ -710,7 +735,7 @@ void modifyTrain(SqList<Train>& TrainList){
             std::cin >> currentTrain.train_set;
             std::cout <<"座位类型:";
             std::cin >>currentTrain.seat_type;
-            
+
             TrainList.ListInsert(i,currentTrain);
         }
     }

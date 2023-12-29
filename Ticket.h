@@ -5,8 +5,8 @@
 #include "Reality.h"
 #include "LinkList.h"
 Status PurchaseTicket(User &user, Ticket &ticket);
-Status EnqueueWaitingList(const std::string& trainNumber);
+Status EnqueueWaitingList(User &user, Ticket &ticket);
 Status ProcessWaitingList();
-Status RefundTicket(LinkedList<Ticket>& ticketList, const std::string& ticketID);
+Status RefundTicket(User &user, LinkedList<Ticket>& TicketList, const std::string& trainNumber);
 
 #endif // TICKET_H_INCLUDED
