@@ -145,19 +145,19 @@ void userMenu() {
     int choice;
     while (true) {
         std::cout << "\n\n";
-        std::cout << "\t\t|╔══════════════════════════════════════╗\n";
-        std::cout << "\t\t|║      欢迎使用铁路票务管理系统        ║\n";
-        std::cout << "\t\t|╠══════════════════════════════════════╣\n";
-        std::cout << "\t\t|║               用户菜单               ║\n";
-        std::cout << "\t\t|╠══════════════════════════════════════╣\n";
-        std::cout << "\t\t|║ 1. 查询时刻表                        ║\n";
-        std::cout << "\t\t|║ 2. 查询票价和余票                    ║\n";
-        std::cout << "\t\t|║ 3. 查询城际路径                      ║\n";
-        std::cout << "\t\t|║ 4. 购买车票                          ║\n";
-        std::cout << "\t\t|║ 5. 查询个人订单                      ║\n";
-        std::cout << "\t\t|║ 6. 退票/改签                         ║\n";
-        std::cout << "\t\t|║ 7. 退出系统                          ║\n";
-        std::cout << "\t\t|╚══════════════════════════════════════╝\n";
+        std::cout << "\t\t╔══════════════════════════════════════╗\n";
+        std::cout << "\t\t║      欢迎使用铁路票务管理系统        ║\n";
+        std::cout << "\t\t╠══════════════════════════════════════╣\n";
+        std::cout << "\t\t║               用户菜单               ║\n";
+        std::cout << "\t\t╠══════════════════════════════════════╣\n";
+        std::cout << "\t\t║ 1. 查询时刻表                        ║\n";
+        std::cout << "\t\t║ 2. 查询票价和余票                    ║\n";
+        std::cout << "\t\t║ 3. 查询城际路径                      ║\n";
+        std::cout << "\t\t║ 4. 购买车票                          ║\n";
+        std::cout << "\t\t║ 5. 查询个人订单                      ║\n";
+        std::cout << "\t\t║ 6. 退票/改签                         ║\n";
+        std::cout << "\t\t║ 7. 退出系统                          ║\n";
+        std::cout << "\t\t╚══════════════════════════════════════╝\n";
         std::cout << "选择操作 (1-7): ";
         std::cin >> choice;
 
@@ -482,7 +482,7 @@ void manageUserDetails() {
 void viewUserList(SqList<User>& UserList){
 
     int i = 0;
-    std::cout << std::left 
+    std::cout << std::left
             << std::setw(14) << "用户名" << " | "
             << std::setw(14) << "密码" << " | "
             << std::setw(4) << "姓名" << " | "
@@ -494,7 +494,7 @@ void viewUserList(SqList<User>& UserList){
     {
         User currentUser;
         UserList.GetElem(i,currentUser);
-        std::cout << std::left 
+        std::cout << std::left
                 << std::setw(14) << currentUser.account <<" | "
                 << std::setw(14) << currentUser.password <<" | "
                 << std::setw(4) << currentUser.name << " | "
