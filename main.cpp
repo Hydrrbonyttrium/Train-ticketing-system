@@ -39,6 +39,7 @@ void enterModifyCityInfo();
 void optimalStationQuery();
 void queryInterCityPath();
 void SetConsoleSize(int cols, int lines);
+void viewUserList(SqList<User>& UserList);
 std::string getCityName(const Vertex& v);
 int getEdgeWeight(const Vertex& v1, const Vertex& v2, WeightMap& weightmap);
 // 主函数
@@ -228,9 +229,8 @@ void registerUser() {
 
     User tempUser;
     tempUser = {username, password, name, sex, id, "0", 0};
-    Register(UserList, tempUser);
-
-    std::cout << "注册成功。\n";
+    if(Register(UserList, tempUser))
+        std::cout << "注册成功。\n";
     system("pause");
     loginUser();
 }
@@ -463,6 +463,7 @@ void manageUserDetails() {
         switch (choice) {
             case 1:
                 // TODO: 实现查看用户列表的逻辑
+                viewUserList(UserList);
                 break;
             case 2:
                 // TODO: 实现选择并编辑用户的逻辑
@@ -474,6 +475,35 @@ void manageUserDetails() {
                 break;
         }
     }
+}
+
+
+//查看用户信息
+void viewUserList(SqList<User>& UserList){
+
+    int i = 0;
+    std::cout << std::left 
+            << std::setw(14) << "用户名" << " | "
+            << std::setw(14) << "密码" << " | "
+            << std::setw(4) << "姓名" << " | "
+            << std::setw(2) << "性别" << " | "
+            << std::setw(18) << "身份证号" << " | "
+            << std::setw(20) << "购买的票" << " | "
+            << std::setw(14) << "权限" << endl;
+    for(int i = 0;i <= UserList.GetLength();i++)
+    {
+        User currentUser;
+        UserList.GetElem(i,currentUser);
+        std::cout << std::left 
+                << std::setw(14) << currentUser.account <<" | "
+                << std::setw(14) << currentUser.password <<" | "
+                << std::setw(4) << currentUser.name << " | "
+                << std::setw(2) << currentUser.sex << " | "
+                << std::setw(18) << currentUser.id << " | "
+                << std::setw(20) << currentUser.tickets << " | "
+                << std::setw(14) << currentUser.authority <<endl;
+    }
+    system("pause");
 }
 
 //管理车次信息
