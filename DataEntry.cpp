@@ -41,6 +41,7 @@ void ReadTrain(SqList<Train>& TrainList) {
         Train tempTrain;
 
         // 读取并分割每行的字段
+        getline(iss,tempTrain.number, ',');
         getline(iss, tempTrain.train_type, ',');
         getline(iss, tempTrain.train_set, ',');
         iss >> tempTrain.seat_type;

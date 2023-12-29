@@ -43,6 +43,9 @@ void viewUserList(SqList<User>& UserList);
 void modifyUser(SqList<User>& UserList);
 void viewTrainNumberList(SqList<TrainNumber>& TrainNumberList);
 void modifyTrainNumberList(SqList<TrainNumber>& TrainNumberList);
+void manageTrain();
+void viewTrainList(SqList<Train>& TrainList);
+void modifyTrain(SqList<Train>& TrainList);
 std::string getCityName(const Vertex& v);
 int getEdgeWeight(const Vertex& v1, const Vertex& v2, WeightMap& weightmap);
 // 主函数
@@ -55,6 +58,7 @@ int main()
     TrainNumberList.InitList();
     ReadUser(UserList);
     ReadTicket(TicketList);
+    ReadTrain(TrainList);
     ReadTrainNumber(TrainNumberList);
     weightmap = get(boost::edge_weight, CityGraph);
     ReadCity(CityGraph, weightmap, stationMap);
@@ -74,6 +78,7 @@ int main()
     WriteUser(UserList);
     WriteTicket(TicketList);
     WriteTrainNumber(TrainNumberList);
+    WriteTrain(TrainList);
     return 0;
 }
 
@@ -423,17 +428,16 @@ void loginAdmin() {
 
 // 管理员主菜单函数
 void adminMenu() {
-    system("cls");
+    
     int choice;
     while (true) {
+        system("cls");
         std::cout << "\n管理员菜单:\n";
         std::cout << "1. 用户资料管理\n";
         std::cout << "2. 车次信息管理\n";
-        std::cout << "3. 录入/修改城市信息\n";
-        std::cout << "4. 录入/修改车辆类别信息\n";
-        std::cout << "5. 站间最优查询管理\n";
-        std::cout << "6. 退出系统\n";
-        std::cout << "选择操作 (1-6): ";
+        std::cout << "3. 录入/修改车辆类别信息\n";
+        std::cout << "4. 退出系统\n";
+        std::cout << "选择操作 (1-4): ";
         std::cin >> choice;
 
         switch (choice) {
@@ -444,19 +448,14 @@ void adminMenu() {
                 manageTrainDetails();
                 break;
             case 3:
-                optimalStationQuery();
+                manageTrain();
                 break;
             case 4:
-                // TODO: 实现录入/修改车辆类别信息的函数
-                break;
-            case 5:
-                optimalStationQuery();
-                break;
-            case 6:
                 std::cout << "退出管理员菜单.\n";
                 return; // 返回到登录界面
             default:
                 std::cout << "无效选择，请重试。\n";
+                system("pause");
                 break;
         }
     }
@@ -640,15 +639,84 @@ void modifyTrainNumberList(SqList<TrainNumber>&TrainNumberList){
     }
     system("pause");
 }
-//修改城市信息
-void enterModifyCityInfo(){
-    
+
+void manageTrain(){
+    system("cls");
+    int choice;
+    while (true) {
+        std::cout << "\n管理车辆信息:\n";
+        std::cout << "1. 查看车辆列表\n";
+        std::cout << "2. 选择车辆进行编辑\n";
+        std::cout << "3. 返回上一级\n";
+        std::cout << "选择操作 (1-3): ";
+        std::cin >> choice;
+
+        switch (choice) {
+            case 1:
+                // TODO: 实现查看用户列表的逻辑
+                viewTrainList(TrainList);
+                break;
+            case 2:
+                // TODO: 实现选择并编辑用户的逻辑
+                modifyTrain(TrainList);
+                break;
+            case 3:
+                return; // 返回管理员菜单
+            default:
+                std::cout << "无效选择，请重试。\n";
+                break;
+        }
+    }
 }
 
-//最优站点查询
-void optimalStationQuery(){
-
+void viewTrainList(SqList<Train>& TrainList){
+    system("cls");
+    int i = 0;
+    std::cout << std::left
+            << std::setw(14) << "编号" << " | "
+            << std::setw(14) << "车次类型" << " | "
+            << std::setw(14) << "车组" << " | "
+            << std::setw(14) << "座位类型" << endl;
+    for(int i = 0;i <= TrainList.GetLength();i++)
+    {
+        Train currentTrain;
+        TrainList.GetElem(i,currentTrain);
+        std::cout << std::left
+                << std::setw(14) << currentTrain.number <<" | "
+                << std::setw(14) << currentTrain.train_type <<" | "
+                << std::setw(14) << currentTrain.train_set << " | "
+                << std::setw(12) << currentTrain.seat_type <<endl;
+    }
+    system("pause");
 }
+
+void modifyTrain(SqList<Train>& TrainList){
+     string number;
+    system("cls");
+    std::cout << "请输入你想找的车辆:";
+    std::cin >> number;
+    std::cout << "输入修改后的车辆资料"<<endl;
+    for(int i = 0 ;i <= TrainList.GetLength(); i++ ){
+        Train currentTrain;
+        TrainList.GetElem(i,currentTrain);
+        if(currentTrain.number == number)
+        {
+            TrainList.ListDelete(i,currentTrain);
+            std::cout << "编号:";
+            std::cin >> currentTrain.number;
+            std::cout << "车次类型:";
+            std::cin >> currentTrain.train_type;
+            std::cout << "车组:";
+            std::cin >> currentTrain.train_set;
+            std::cout <<"座位类型:";
+            std::cin >>currentTrain.seat_type;
+            
+            TrainList.ListInsert(i,currentTrain);
+        }
+    }
+    system("pause");
+}
+
 //**********************************//
 
 std::string getCityName(const Vertex& v) {

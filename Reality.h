@@ -35,6 +35,7 @@
 
  typedef struct Train
  {
+   std::string number;
    std::string train_type;//车次类型（高铁/动车）
    std::string train_set;//车组(复兴/和谐)
    std::string seat_type;
