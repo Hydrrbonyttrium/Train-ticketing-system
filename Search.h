@@ -20,4 +20,6 @@ std::vector<Vertex> dijkstraShortestPath(const Graph& g, const Vertex& start, co
 Status Timetable(LinkedList<Ticket>& TicketList, const std::string& fromStation, const std::string& toStation);
 Ticket FindTicketByTrainNumber(LinkedList<Ticket>& TicketList, const std::string& trainNumber);
 Ticket FindTicketByTrainNumberAndSeat(LinkedList<Ticket>& TicketList, const std::string& trainNumber, const std::string& SeatType);
+void quickSort(std::vector<Ticket>& tickets, int low, int high);
+int partition(std::vector<Ticket>& tickets, int low, int high);
 #endif // SEARCH_H
