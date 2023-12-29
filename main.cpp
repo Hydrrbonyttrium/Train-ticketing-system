@@ -41,6 +41,8 @@ void queryInterCityPath();
 void SetConsoleSize(int cols, int lines);
 void viewUserList(SqList<User>& UserList);
 void modifyUser(SqList<User>& UserList);
+void viewTrainList(SqList<TrainNumber>& TrainNumberList);
+void modifyTrain(SqList<TrainNumber>& TrainNumberList);
 std::string getCityName(const Vertex& v);
 int getEdgeWeight(const Vertex& v1, const Vertex& v2, WeightMap& weightmap);
 // 主函数
@@ -553,9 +555,11 @@ void manageTrainDetails() {
         switch (choice) {
             case 1:
                 // TODO: 实现查看车次列表的逻辑
+                viewTrainNumberList(TrainNumberList);
                 break;
             case 2:
                 // TODO: 实现选择并编辑车次的逻辑
+                modifyTrainNumberList(TrainNumberList);
                 break;
             case 3:
                 return; // 返回管理员菜单
@@ -566,9 +570,67 @@ void manageTrainDetails() {
     }
 }
 
+void viewTrainNumberList(SqList<TrainNumber>& TrainNumberList){
+
+    int i = 0;
+    std::cout << std::left
+            << std::setw(14) << "车次" << " | "
+            << std::setw(14) << "始发站" << " | "
+            << std::setw(4) << "终点站" << " | "
+            << std::setw(2) << "票价" << " | "
+            << std::setw(18) << "余票" << " | "
+            << std::setw(20) << "总路程" << " | "
+            << std::setw(14) << "总车程" << endl;
+    for(int i = 0;i <= UserList.GetLength();i++)
+    {
+        TrainNumber currentTrainNumber;
+        TrainNumberList.GetElem(i,currentTrainNumber);
+        std::cout << std::left
+                << std::setw(14) << currentTrainNumber.number <<" | "
+                << std::setw(14) << currentTrainNumber.begin <<" | "
+                << std::setw(4) << currentTrainNumber.end << " | "
+                << std::setw(2) << currentTrainNumber.price << " | "
+                << std::setw(18) << currentTrainNumber.remains << " | "
+                << std::setw(20) << currentTrainNumber.distance << " | "
+                << std::setw(14) << currentTrainNumber.train_distance <<endl;
+    }
+    system("pause");
+}
+
+void modifyTrainNumberList(SqList<TrainNumber>&TrainNumberList){
+    string number;
+    system("cls");
+    std::cout << "请输入你想找的车次:";
+    std::cin >> number;
+    std::cout << "输入修改后的车次信息"<<endl;
+    for(int i = 0 ;i <= TrainNumberList.GetLength(); i++ ){
+        TrainNumber currentTrainNumber;
+        TrainNumberList.GetElem(i,currentTrainNumber);
+        if(currentTrainNumber.number == number)
+        {
+            TrainNumberList.ListDelete(i,currentTrainNumber);
+            std::cout << "车次:";
+            std::cin >> currentTrainNumber.number;
+            std::cout << "始发站:";
+            std::cin >> currentTrainNumber.begin;
+            std::cout << "终点站:";
+            std::cin >> currentTrainNumber.end;
+            std::cout <<"票价:";
+            std::cin >>currentTrainNumber.price;
+            std::cout <<"余票:";
+            std::cin >> currentTrainNumber.remains;
+            std::cout <<"总路程:";
+            std::cin >> currentTrainNumber.distance;
+            std::cout <<"总车程:";
+            std::cin >> currentTrainNumber.train_distance;
+            TrainNumberList.ListInsert(i,currentTrainNumber);
+        }
+    }
+    system("pause");
+}
 //修改城市信息
 void enterModifyCityInfo(){
-
+    
 }
 
 //最优站点查询

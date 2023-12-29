@@ -59,7 +59,7 @@ void ReadTrainNumber(SqList<TrainNumber>& TrainNumberList) {
         TrainNumber tempTrainNumber;
 
         // 读取并分割每行的字段
-            fscanf(file,"%s,%s,%s,%d,%d,%d,%s\n",tempTrainNumber.number,tempTrainNumber.begin,tempTrainNumber.end,tempTrainNumber.ticket_number,tempTrainNumber.distance,tempTrainNumber.train_distance,tempTrainNumber.carriage);
+            fscanf(file,"%s,%s,%s,%d,%d,%d,%s\n",tempTrainNumber.number,tempTrainNumber.begin,tempTrainNumber.end,tempTrainNumber.distance,tempTrainNumber.train_distance,tempTrainNumber.carriage);
 
 
         // 将读取的用户添加到列表中
@@ -156,14 +156,14 @@ void WriteTrainNumber(SqList<TrainNumber>& TrainNumberList) {
     for (int i = 1; i <= TrainNumberList.GetLength(); i++) {
         TrainNumber tempTrainNumber;
         if (TrainNumberList.GetElem(i, tempTrainNumber) == OK) { // 确保能够获取元素
-            fprintf(file, "%s,%s,%s,%d,%d,%d,%s\n",
+            fprintf(file, "%s,%s,%s,%d,%d,%d,%d,%s\n",
                     tempTrainNumber.number.c_str(),
                     tempTrainNumber.begin.c_str(),
                     tempTrainNumber.end.c_str(),
-                    &tempTrainNumber.ticket_number,
+                    &tempTrainNumber.price,
+                    &tempTrainNumber.remains,
                     &tempTrainNumber.distance,
-                    &tempTrainNumber.train_distance,
-                    tempTrainNumber.carriage
+                    &tempTrainNumber.train_distance
                     );
         }
     }
