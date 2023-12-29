@@ -14,6 +14,7 @@
  #include <fstream>
  #include <sstream>
  #include<string.h>
+ #include <windows.h> // 包含 Windows 头文件
  using namespace std;
  // 函数结果状态代码
  #define TRUE 1

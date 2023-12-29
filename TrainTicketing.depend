@@ -17,7 +17,7 @@
 	"Reality.h"
 	"SqList.tpp"
 
-1703592597 e:\projects\trainticketing\public1.h
+1703818192 e:\projects\trainticketing\public1.h
 	<string.h>
 	<ctype.h>
 	<malloc.h>
@@ -31,6 +31,7 @@
 	<fstream>
 	<sstream>
 	<string.h>
+	<windows.h>
 
 1703774528 e:\projects\trainticketing\reality.h
 	<string.h>
@@ -88,7 +89,7 @@
 	"Reality.h"
 	"LinkList.h"
 
-1703778676 source:e:\projects\trainticketing\main.cpp
+1703818298 source:e:\projects\trainticketing\main.cpp
 	"Public1.h"
 	"Reality.h"
 	"Search.h"

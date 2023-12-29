@@ -32,10 +32,12 @@ void manageUserDetails();
 void manageTrainDetails();
 void enterModifyCityInfo();
 void optimalStationQuery();
+void SetConsoleSize(int cols, int lines);
 
 // 主函数
 int main()
 {
+    SetConsoleSize(80, 20);
     UserList.InitList();
     TrainList.InitList();
     TrainNumberList.InitList();
@@ -61,9 +63,10 @@ int main()
 
 // 登录菜单
 void loginMenu() {
-    system("cls");
+    SetConsoleSize(80, 20); // 控制窗口大小
     int choice;
     while (true) {
+        printf("\n\n\n\n\n\n");
         printf("\t\t|=============================================|\n");
         printf("\t\t|===            铁路票务管理系统           ===|\n");
         printf("\t\t|=============================================|\n");
@@ -97,33 +100,50 @@ void loginMenu() {
 
 //***********普通用户功能***********//
 
-//普通用户登录菜单
- void loginUser() {
+// 普通用户登录菜单
+void loginUser() {
     system("cls");
     std::string username, password;
+
+    std::cout << "\n\n";
+    std::cout << "\t\t╔══════════════════════════════════════╗\n";
+    std::cout << "\t\t║      欢迎使用铁路票务管理系统       ║\n";
+    std::cout << "\t\t╠══════════════════════════════════════╣\n";
+    std::cout << "\t\t║            用户登录菜单              ║\n";
+    std::cout << "\t\t╚══════════════════════════════════════╝\n";
+
     std::cout << "输入用户名: ";
     std::cin >> username;
     std::cout << "输入密码: ";
     std::cin >> password;
+
     // 验证登录逻辑
-    if(Login(UserList,username,password,currentUser))
+    if (Login(UserList, username, password, currentUser)) {
         userMenu();
-    else
-        std::cout << "用户名或密码错误" << endl;
+    } else {
+        std::cout << "用户名或密码错误。\n";
+    }
 }
 
-// 普通用户主菜单函数
+
+// 用户主菜单函数
 void userMenu() {
     system("cls");
     int choice;
     while (true) {
-        std::cout << "\n用户菜单:\n";
-        std::cout << "1. 查询时刻表\n";
-        std::cout << "2. 查询票价和余票\n";
-        std::cout << "3. 购买车票\n";
-        std::cout << "4. 查询个人订单\n";
-        std::cout << "5. 退票/改签\n";
-        std::cout << "6. 退出系统\n";
+        std::cout << "\n\n";
+        std::cout << "\t\t|╔══════════════════════════════════════╗\n";
+        std::cout << "\t\t|║      欢迎使用铁路票务管理系统        ║\n";
+        std::cout << "\t\t|╠══════════════════════════════════════╣\n";
+        std::cout << "\t\t|║               用户菜单               ║\n";
+        std::cout << "\t\t|╠══════════════════════════════════════╣\n";
+        std::cout << "\t\t|║ 1. 查询时刻表                        ║\n";
+        std::cout << "\t\t|║ 2. 查询票价和余票                    ║\n";
+        std::cout << "\t\t|║ 3. 购买车票                          ║\n";
+        std::cout << "\t\t|║ 4. 查询个人订单                      ║\n";
+        std::cout << "\t\t|║ 5. 退票/改签                         ║\n";
+        std::cout << "\t\t|║ 6. 退出系统                          ║\n";
+        std::cout << "\t\t|╚══════════════════════════════════════╝\n";
         std::cout << "选择操作 (1-6): ";
         std::cin >> choice;
 
@@ -153,39 +173,51 @@ void userMenu() {
     }
 }
 
+
 // 普通用户注册菜单
 void registerUser() {
     int outcome;
-    std::string username, password, name, confirmPassword ,sex, id;
-    do{
+    std::string username, password, name, confirmPassword, sex, id;
+
+    do {
         system("cls");
+        std::cout << "\n\n";
+        std::cout << "╔══════════════════════════════════════╗\n";
+        std::cout << "║      欢迎使用铁路票务管理系统        ║\n";
+        std::cout << "╠══════════════════════════════════════╣\n";
+        std::cout << "║            用户注册菜单             ║\n";
+        std::cout << "╚══════════════════════════════════════╝\n";
+
         std::cout << "输入用户名: ";
         std::cin >> username;
         std::cout << "设置密码: ";
         std::cin >> password;
         std::cout << "确认密码: ";
         std::cin >> confirmPassword;
-        std::cout <<"输入姓名:";
+        std::cout << "输入姓名: ";
         std::cin >> name;
-        std::cout << "请输入性别:";
+        std::cout << "请输入性别: ";
         std::cin >> sex;
-        std::cout << "输入身份证:";
+        std::cout << "输入身份证: ";
         std::cin >> id;
-        outcome= password==confirmPassword?0:1;
-        if(outcome)
-        {
-            std::cout << "两次密码不同,请重新输入" <<endl;
+
+        outcome = (password == confirmPassword) ? 0 : 1;
+
+        if (outcome) {
+            std::cout << "两次密码不同，请重新输入。\n";
             system("pause");
         }
-    }while(outcome);
-    // TODO: 注册逻辑
+    } while (outcome);
+
     User tempUser;
-    tempUser={username,password,name,sex,id,"0",0};
-    Register(UserList,tempUser);
-    std::cout << "注册成功" << endl;
+    tempUser = {username, password, name, sex, id, "0", 0};
+    Register(UserList, tempUser);
+
+    std::cout << "注册成功。\n";
     system("pause");
     loginUser();
 }
+
 
 // 查询时刻表
 void queryTimetable() {
@@ -260,6 +292,9 @@ void purchaseTicket() {
 // 预售车票
 void purchaseAdvanceTicket() {
     // 实现预售车票购买逻辑...
+    // 先进入时刻表查询
+    queryTimetable();
+
 }
 
 // 退票/改签
@@ -394,3 +429,22 @@ void optimalStationQuery(){
 
 }
 //**********************************//
+
+// 设置控制台窗口大小的函数
+void SetConsoleSize(int cols, int lines) {
+    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    // 设置控制台窗口缓冲区大小
+    COORD coord;
+    coord.X = cols;
+    coord.Y = lines;
+    SetConsoleScreenBufferSize(hOut, coord);
+
+    // 设置控制台窗口大小
+    SMALL_RECT rect;
+    rect.Left = 0;
+    rect.Top = 0;
+    rect.Right = cols - 1;
+    rect.Bottom = lines - 1;
+    SetConsoleWindowInfo(hOut, TRUE, &rect);
+}
