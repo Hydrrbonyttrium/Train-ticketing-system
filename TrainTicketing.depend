@@ -82,15 +82,15 @@
 	<iostream>
 	<iomanip>
 
-1703865338 source:e:\projects\trainticketing\ticket.cpp
+1703866003 source:e:\projects\trainticketing\ticket.cpp
 	"Ticket.h"
 
-1703865338 e:\projects\trainticketing\ticket.h
+1703865967 e:\projects\trainticketing\ticket.h
 	"Public1.h"
 	"Reality.h"
 	"LinkList.h"
 
-1703864389 source:e:\projects\trainticketing\main.cpp
+1703865654 source:e:\projects\trainticketing\main.cpp
 	"Public1.h"
 	"Reality.h"
 	"Search.h"

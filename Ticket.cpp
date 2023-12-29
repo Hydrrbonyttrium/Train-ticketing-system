@@ -1,6 +1,6 @@
 #include "Ticket.h"
 
-Status PurchaseTicket(User &user, Ticket &ticket) {
+Status PurchaseTicket(User &user, LinkedList<Ticket>& TicketList, Ticket &ticket) {
     // 实现购票逻辑
     // 根据 trainNumber 查找并修改车票信息
     // 如果票数为0，调用 RecommendTickets 或 EnqueueWaitingList
@@ -12,6 +12,20 @@ Status PurchaseTicket(User &user, Ticket &ticket) {
         ticket.remains--;
         if (!user.tickets.empty()) {user.tickets += '/'; } // 这里的分隔符有待商议
         user.tickets += this_ticket;         // 在用户结构体下增加票记录
+
+        // 对表中链表进行更改
+        int i;
+        Ticket tempTicket;
+        Ticket tempTicketForDel;
+        for (i = 1; TicketList.GetElemPtr(i) != nullptr; ++i) {
+            tempTicket = TicketList.GetElem(i);
+            if (tempTicket.train_number == ticket.train_number) {
+                break;
+            }
+        }
+        if (i > TicketList.ListLength()) return ERROR; // 未找到 返回
+        TicketList.ListDelete(i, tempTicketForDel);
+        TicketList.ListInsert(i, tempTicket); // 删一个添加一个
         return OK;
     }else {
         // 添加至等待列表 目前未完工

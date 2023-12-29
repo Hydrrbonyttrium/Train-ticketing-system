@@ -331,7 +331,7 @@ void purchaseTicket() {
     Ticket tempfoundTicket = FindTicketByTrainNumberAndSeat(TicketList, trainNumber, seatType);
     if (!tempfoundTicket.train_number.empty()) { // 检查是否找到了票
         std::cout << "找到车票 正在购买" << std::endl;
-        PurchaseTicket(currentUser, tempfoundTicket);
+        PurchaseTicket(currentUser, TicketList, tempfoundTicket);
     } else {
         std::cout << "未找到车次为 " << trainNumber << " 的票信息" << std::endl;
     }
