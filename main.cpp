@@ -77,6 +77,7 @@ int main()
 
 // 登录菜单
 void loginMenu() {
+    system("cls");
     SetConsoleSize(80, 20); // 控制窗口大小
     int choice;
     while (true) {
@@ -197,6 +198,7 @@ void userMenu() {
 // 普通用户注册菜单
 void registerUser() {
     SetConsoleSize(80, 20);
+    system("cls");
     int outcome;
     std::string username, password, name, confirmPassword, sex, id;
 
@@ -242,6 +244,7 @@ void registerUser() {
 // 查询时刻表
 void queryTimetable() {
     SetConsoleSize(100, 60);
+    system("cls");
     std::string start_stop;
     std::string end_stop;
 
@@ -272,6 +275,7 @@ void queryTimetable() {
 // 查询票价和余票
 void queryTicketPrice() {
     SetConsoleSize(80, 20);
+    system("cls");
     std::string trainNumber;
     std::cout << "输入车次号: ";
     std::cin >> trainNumber;
@@ -289,6 +293,7 @@ void queryTicketPrice() {
 // 查看个人订单
 void viewOrders() {
     SetConsoleSize(80, 20);
+    system("cls");
     User tempUser = currentUser;
     string tempCurrentUserTicket = tempUser.tickets;
     cout << "该用户拥有票：" << endl;
@@ -306,6 +311,7 @@ void viewOrders() {
 // 购买车票
 void purchaseTicket() {
     SetConsoleSize(80, 20);
+    system("cls");
     std::string trainNumber;
     std::string seatType;
 
@@ -399,6 +405,7 @@ void refundOrChangeTicket() {
 //***********管理员用户功能**********//
 //管理员用户登录菜单
 void loginAdmin() {
+    system("cls");
     std::string adminUsername, adminPassword;
     std::cout << "输入管理员用户名: ";
     std::cin >> adminUsername;
@@ -454,6 +461,7 @@ void adminMenu() {
 
 //用户资料管理
 void manageUserDetails() {
+    system("cls");
     int choice;
     while (true) {
         std::cout << "\n管理用户资料:\n";
@@ -483,7 +491,7 @@ void manageUserDetails() {
 
 //查看用户信息
 void viewUserList(SqList<User>& UserList){
-
+    system("cls");
     int i = 0;
     std::cout << std::left
             << std::setw(14) << "用户名" << " | "
@@ -544,6 +552,7 @@ void modifyUser(SqList<User>& UserLsit){
 //管理车次信息
 void manageTrainDetails() {
     int choice;
+    system("cls");
     while (true) {
         std::cout << "\n管理车次信息:\n";
         std::cout << "1. 查看车次列表\n";
@@ -571,7 +580,7 @@ void manageTrainDetails() {
 }
 
 void viewTrainNumberList(SqList<TrainNumber>& TrainNumberList){
-
+    system("cls");
     int i = 0;
     std::cout << std::left
             << std::setw(14) << "车次" << " | "
