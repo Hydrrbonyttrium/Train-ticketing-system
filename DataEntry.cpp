@@ -59,7 +59,15 @@ void ReadTrainNumber(SqList<TrainNumber>& TrainNumberList) {
         TrainNumber tempTrainNumber;
 
         // 读取并分割每行的字段
-            fscanf(file,"%s,%s,%s,%d,%d,%d,%s\n",tempTrainNumber.number,tempTrainNumber.begin,tempTrainNumber.end,tempTrainNumber.distance,tempTrainNumber.train_distance,tempTrainNumber.carriage);
+            fscanf(file,"%s,%s,%s,%d,%d,%d,%d,%s\n",
+            tempTrainNumber.number,
+            tempTrainNumber.begin,
+            tempTrainNumber.end,
+            &tempTrainNumber.price,
+            &tempTrainNumber.remains,
+            &tempTrainNumber.distance,
+            &tempTrainNumber.train_distance,
+            tempTrainNumber.carriage);
 
 
         // 将读取的用户添加到列表中

@@ -55,6 +55,7 @@ int main()
     TrainNumberList.InitList();
     ReadUser(UserList);
     ReadTicket(TicketList);
+    ReadTrainNumber(TrainNumberList);
     weightmap = get(boost::edge_weight, CityGraph);
     ReadCity(CityGraph, weightmap, stationMap);
     loginMenu();
