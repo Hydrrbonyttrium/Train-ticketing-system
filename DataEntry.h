@@ -26,5 +26,6 @@ void ReadTicket(LinkedList<Ticket>& TicketList);
 void ReadCity(Graph& g, WeightMap& weightmap, std::unordered_map<std::string, Vertex>& stationMap);
 void WriteCity(const Graph& g, const WeightMap& weightmap, const std::unordered_map<std::string, Vertex>& stationMap);
 void WriteTicket(LinkedList<Ticket>& TicketList);
+void WriteTrainNumber(SqList<TrainNumber>& TrainNumberList);
 #endif // DATAENTRY_H_INCLUDED
 

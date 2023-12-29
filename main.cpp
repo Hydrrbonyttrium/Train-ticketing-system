@@ -73,6 +73,7 @@ int main()
 
     WriteUser(UserList);
     WriteTicket(TicketList);
+    WriteTrainNumber(TrainNumberList);
     return 0;
 }
 
