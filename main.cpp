@@ -13,6 +13,11 @@ using namespace std;
 SqList<User> UserList;
 SqList<Train> TrainList;
 SqList<TrainNumber> TrainNumberList;
+
+Graph CityGraph;
+WeightMap weightmap;
+std::unordered_map<std::string, Vertex> stationMap;
+
 User currentUser;
 LinkedList<Ticket> TicketList;
 
@@ -32,17 +37,22 @@ void manageUserDetails();
 void manageTrainDetails();
 void enterModifyCityInfo();
 void optimalStationQuery();
+void queryInterCityPath();
 void SetConsoleSize(int cols, int lines);
-
+std::string getCityName(const Vertex& v);
+int getEdgeWeight(const Vertex& v1, const Vertex& v2, WeightMap& weightmap);
 // 主函数
 int main()
 {
     SetConsoleSize(80, 20);
+    // 全套数据读取
     UserList.InitList();
     TrainList.InitList();
     TrainNumberList.InitList();
     ReadUser(UserList);
     ReadTicket(TicketList);
+    weightmap = get(boost::edge_weight, CityGraph);
+    ReadCity(CityGraph, weightmap, stationMap);
     loginMenu();
     // ReadTrain(TrainList);
     // ReadTrainNumber(TrainNumberList);
@@ -108,9 +118,9 @@ void loginUser() {
 
     std::cout << "\n\n";
     std::cout << "\t\t╔══════════════════════════════════════╗\n";
-    std::cout << "\t\t║      欢迎使用铁路票务管理系统       ║\n";
+    std::cout << "\t\t║      欢迎使用铁路票务管理系统        ║\n";
     std::cout << "\t\t╠══════════════════════════════════════╣\n";
-    std::cout << "\t\t║            用户登录菜单               ║\n";
+    std::cout << "\t\t║            用户登录菜单              ║\n";
     std::cout << "\t\t╚══════════════════════════════════════╝\n";
 
     std::cout << "输入用户名: ";
@@ -141,12 +151,13 @@ void userMenu() {
         std::cout << "\t\t|╠══════════════════════════════════════╣\n";
         std::cout << "\t\t|║ 1. 查询时刻表                        ║\n";
         std::cout << "\t\t|║ 2. 查询票价和余票                    ║\n";
-        std::cout << "\t\t|║ 3. 购买车票                          ║\n";
-        std::cout << "\t\t|║ 4. 查询个人订单                      ║\n";
-        std::cout << "\t\t|║ 5. 退票/改签                         ║\n";
-        std::cout << "\t\t|║ 6. 退出系统                          ║\n";
+        std::cout << "\t\t|║ 3. 查询城际路径                      ║\n";
+        std::cout << "\t\t|║ 4. 购买车票                          ║\n";
+        std::cout << "\t\t|║ 5. 查询个人订单                      ║\n";
+        std::cout << "\t\t|║ 6. 退票/改签                         ║\n";
+        std::cout << "\t\t|║ 7. 退出系统                          ║\n";
         std::cout << "\t\t|╚══════════════════════════════════════╝\n";
-        std::cout << "选择操作 (1-6): ";
+        std::cout << "选择操作 (1-7): ";
         std::cin >> choice;
 
         switch (choice) {
@@ -157,15 +168,18 @@ void userMenu() {
                 queryTicketPrice();
                 break;
             case 3:
-                purchaseTicket();
+                queryInterCityPath();
                 break;
             case 4:
-                viewOrders();
+                purchaseTicket();
                 break;
             case 5:
-                refundOrChangeTicket();
+                viewOrders();
                 break;
             case 6:
+                refundOrChangeTicket();
+                break;
+            case 7:
                 std::cout << "退出用户菜单.\n";
                 return; // 返回到登录界面
             default:
@@ -303,6 +317,59 @@ void purchaseTicket() {
         PurchaseTicket(currentUser, tempfoundTicket);
     } else {
         std::cout << "未找到车次为 " << trainNumber << " 的票信息" << std::endl;
+    }
+}
+
+void queryInterCityPath() {
+    SetConsoleSize(100, 60);
+    system("cls");
+    std::cout << "\t\t╔══════════════════════════════════════╗\n";
+    std::cout << "\t\t║      欢迎使用铁路票务管理系统        ║\n";
+    std::cout << "\t\t╠══════════════════════════════════════╣\n";
+    std::cout << "\t\t║            城际查询菜单              ║\n";
+    std::cout << "\t\t╚══════════════════════════════════════╝\n";
+
+    std::cout << "请输入出发城市: ";
+    std::string sourceCity;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::getline(std::cin, sourceCity);
+
+    std::cout << "请输入目的城市: ";
+    std::string destinationCity;
+    std::getline(std::cin, destinationCity);
+
+    if (stationMap.find(sourceCity) != stationMap.end() && stationMap.find(destinationCity) != stationMap.end()) {
+        Vertex startVertex = stationMap[sourceCity];
+        Vertex endVertex = stationMap[destinationCity];
+        std::vector<Vertex> path = dijkstraShortestPath(CityGraph, startVertex, endVertex);
+
+        // 获取权重映射
+        WeightMap weightmap = get(boost::edge_weight, CityGraph);
+
+        // 输出表头
+        std::cout << std::left << std::setw(40) << "起始城市" << "|" << std::setw(40) << "目的城市" << "|" << std::setw(10) << "距离" << std::endl;
+        std::cout << std::string(52, '-') << std::endl; // 打印分隔线
+
+        for (size_t i = 0; i < path.size() - 1; ++i) {
+            std::string fromCity = getCityName(path[i]);
+            std::string toCity = getCityName(path[i + 1]);
+
+            // 假设已有函数可以获取两个顶点之间的边权重
+            int distance = getEdgeWeight(path[i], path[i + 1], weightmap);
+
+            std::cout << std::left << std::setw(40) << fromCity << "|" << std::setw(40) << toCity << "|" << std::setw(10) << distance << std::endl;
+        }
+    }
+
+    while (TRUE) {
+        char result;
+        std::cout << "按q结束查询：";
+        std::cin >> result;
+        if (result == 'q') {
+            SetConsoleSize(80, 20);
+            system("cls");
+            break;
+        }
     }
 }
 
@@ -446,6 +513,27 @@ void optimalStationQuery(){
 
 }
 //**********************************//
+
+std::string getCityName(const Vertex& v) {
+    for (const auto& pair : stationMap) {
+        if (pair.second == v) {
+            return pair.first; // 找到与 Vertex 对应的城市名称
+        }
+    }
+    return ""; // 如果没有找到对应的城市，返回空字符串
+}
+
+int getEdgeWeight(const Vertex& v1, const Vertex& v2, WeightMap& weightmap) {
+    boost::graph_traits<Graph>::edge_descriptor e;
+    bool exists;
+    boost::tie(e, exists) = edge(v1, v2, CityGraph);
+
+    if (exists) {
+        return weightmap[e]; // 返回边的权重
+    } else {
+        return -1; // 表示边不存在
+    }
+}
 
 // 设置控制台窗口大小的函数
 void SetConsoleSize(int cols, int lines) {
