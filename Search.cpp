@@ -27,8 +27,9 @@ std::vector<Vertex> dijkstraShortestPath(const Graph& g, const Vertex& start, co
 Status Timetable(LinkedList<Ticket>& TicketList, const std::string& fromStation, const std::string& toStation) {
     std::vector<Ticket> matchingTickets;
 
+    int TicketListLengrh = TicketList.ListLength();
     // 遍历链表，找到所有匹配的票
-    for (int i = 0; i < TicketList.ListLength(); ++i) {
+    for (int i = 1; i < TicketListLengrh; ++i) {
         Ticket tempTicket = TicketList.GetElem(i);
         if (tempTicket.start == fromStation && tempTicket.end == toStation) {
             matchingTickets.push_back(tempTicket);
