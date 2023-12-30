@@ -55,6 +55,11 @@ Status RefundTicket(User &user, LinkedList<Ticket>& TicketList, const std::strin
     if (foundPos != std::string::npos) {
         // ÕÒµ½ÁË×Ó×Ö·û´®
         user.tickets.erase(foundPos, trainNumber.length());
+        if (user.tickets[foundPos - 1] == '/') {
+            user.tickets.erase(foundPos - 1, 1);
+        }else {
+            user.tickets.erase(foundPos + 1 + trainNumber.length(), 1);
+        }
         return OK;
     } else {
         // Î´ÕÒµ½×Ó×Ö·û´®
