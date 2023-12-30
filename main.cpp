@@ -6,6 +6,7 @@
 #include "Login.h"
 #include "Sqlist.h"
 #include "LinkList.h"
+#include <windns.h>
 
 using namespace std;
 
@@ -49,10 +50,12 @@ void viewTrainList(SqList<Train>& TrainList);
 void modifyTrain(SqList<Train>& TrainList);
 std::string getCityName(const Vertex& v);
 int getEdgeWeight(const Vertex& v1, const Vertex& v2, WeightMap& weightmap);
+void draw();
 // 主函数
 int main()
 {
     SetConsoleSize(80, 20);
+    draw();
     // 全套数据读取
     UserList.InitList();
     TrainList.InitList();
@@ -122,6 +125,32 @@ void loginMenu() {
     }
 }
 
+void draw()
+{
+    system("cls");
+    printf("\n\n\n\n\n");
+    printf("\t\t         ********                      ******\n");
+    printf("\t\t       *************               *************\n");
+    printf("\t\t     *****************           *****************\n");
+    printf("\t\t   ***********/*********       ********************\n");
+    printf("\t\t  ****----***/*----*******   ****\\****/**==*********\n");
+    printf("\t\t *****\\ / ****|**/***************---**|**|*|*********\n");
+    printf("\t\t  ******/******|******************* / *|/*|\\|*********\n");
+    printf("\t\t  ****/***\\ **/*\\******************\\******|***********\n");
+    printf("\t\t  ***********/***\\***************** / *****|**********\n");
+    printf("\t\t  *********************************===============****\n");
+    printf("\t\t  ***************************************************\n");
+    printf("\t\t    ***********************************************\n");
+    printf("\t\t      *******************************************\n");
+    printf("\t\t         **************************************\n");
+    printf("\t\t           **********************************\n");
+    printf("\t\t              *****************************\n");
+    printf("\t\t                *************************\n");
+    printf("\t\t                    ******************\n");
+    printf("\t\t                        **********\n");
+    system("pause");
+}
+
 //***********普通用户功能***********//
 
 // 普通用户登录菜单
@@ -155,9 +184,10 @@ void loginUser() {
 // 用户主菜单函数
 void userMenu() {
     SetConsoleSize(80, 20);
-    system("cls");
+    
     int choice;
     while (true) {
+        system("cls");
         std::cout << "\n\n";
         std::cout << "\t\t╔══════════════════════════════════════╗\n";
         std::cout << "\t\t║      欢迎使用铁路票务管理系统        ║\n";
@@ -169,7 +199,7 @@ void userMenu() {
         std::cout << "\t\t║ 3. 查询城际路径                      ║\n";
         std::cout << "\t\t║ 4. 购买车票                          ║\n";
         std::cout << "\t\t║ 5. 查询个人订单                      ║\n";
-        std::cout << "\t\t║ 6. 退票                            ║\n";
+        std::cout << "\t\t║ 6. 退票                              ║\n";
         std::cout << "\t\t║ 7. 退出系统                          ║\n";
         std::cout << "\t\t╚══════════════════════════════════════╝\n";
         std::cout << "选择操作 (1-7): ";
@@ -343,7 +373,7 @@ void viewOrders() {
             break;
         }
     }
-    system("pause");
+
 }
 
 // 购买车票
@@ -424,7 +454,6 @@ void queryInterCityPath() {
             break;
         }
     }
-    system("pause");
 }
 
 // 预售车票
@@ -464,7 +493,7 @@ void refundOrChangeTicket() {
             break;
         }
     }
-    system("pause");
+
 }
 
 //**********************************//
@@ -527,9 +556,10 @@ void adminMenu() {
 
 //用户资料管理
 void manageUserDetails() {
-    system("cls");
+    
     int choice;
     while (true) {
+        system("cls");
         std::cout << "\n管理用户资料:\n";
         std::cout << "1. 查看用户列表\n";
         std::cout << "2. 选择用户进行编辑\n";
@@ -557,28 +587,29 @@ void manageUserDetails() {
 
 //查看用户信息
 void viewUserList(SqList<User>& UserList){
+    SetConsoleSize(100,80);
     system("cls");
     int i = 0;
     std::cout << std::left
-            << std::setw(14) << "用户名" << " | "
-            << std::setw(14) << "密码" << " | "
-            << std::setw(4) << "姓名" << " | "
-            << std::setw(2) << "性别" << " | "
-            << std::setw(18) << "身份证号" << " | "
-            << std::setw(20) << "购买的票" << " | "
-            << std::setw(14) << "权限" << endl;
-    for(int i = 0;i <= UserList.GetLength();i++)
+            << std::setw(20) << "用户名" << " | "
+            << std::setw(20) << "密码" << " | "
+            << std::setw(10) << "姓名" << " | "
+            << std::setw(8) << "性别" << " | "
+            << std::setw(20) << "身份证号" << " | "
+            << std::setw(30) << "购买的票" << " | "
+            << std::setw(20) << "权限" << endl;
+    for(int i = 1;i <= UserList.GetLength();i++)
     {
         User currentUser;
         UserList.GetElem(i,currentUser);
         std::cout << std::left
-                << std::setw(14) << currentUser.account <<" | "
-                << std::setw(14) << currentUser.password <<" | "
-                << std::setw(4) << currentUser.name << " | "
-                << std::setw(2) << currentUser.sex << " | "
-                << std::setw(18) << currentUser.id << " | "
-                << std::setw(20) << currentUser.tickets << " | "
-                << std::setw(14) << currentUser.authority <<endl;
+                << std::setw(20) << currentUser.account <<" | "
+                << std::setw(20) << currentUser.password <<" | "
+                << std::setw(10) << currentUser.name << " | "
+                << std::setw(8) << currentUser.sex << " | "
+                << std::setw(20) << currentUser.id << " | "
+                << std::setw(30) << currentUser.tickets << " | "
+                << std::setw(20) << currentUser.authority <<endl;
     }
     system("pause");
 }
@@ -589,7 +620,7 @@ void modifyUser(SqList<User>& UserLsit){
     std::cout << "请输入你想找的用户名:";
     std::cin >> account;
     std::cout << "输入修改后的用户资料"<<endl;
-    for(int i = 0 ;i <= UserList.GetLength(); i++ ){
+    for(int i = 1 ;i <= UserList.GetLength(); i++ ){
         User currentUser;
         UserList.GetElem(i,currentUser);
         if(currentUser.account == account)
@@ -618,8 +649,9 @@ void modifyUser(SqList<User>& UserLsit){
 //管理车次信息
 void manageTrainDetails() {
     int choice;
-    system("cls");
-    while (true) {
+   
+    while (true) { 
+        system("cls");
         std::cout << "\n管理车次信息:\n";
         std::cout << "1. 查看车次列表\n";
         std::cout << "2. 选择车次进行编辑\n";
@@ -647,27 +679,28 @@ void manageTrainDetails() {
 
 void viewTrainNumberList(SqList<TrainNumber>& TrainNumberList){
     system("cls");
+    SetConsoleSize(130,80);
     int i = 0;
     std::cout << std::left
-            << std::setw(14) << "车次" << " | "
-            << std::setw(14) << "始发站" << " | "
-            << std::setw(4) << "终点站" << " | "
-            << std::setw(2) << "票价" << " | "
-            << std::setw(18) << "余票" << " | "
-            << std::setw(20) << "总路程" << " | "
-            << std::setw(14) << "总车程" << endl;
-    for(int i = 0;i <= UserList.GetLength();i++)
+            << std::setw(20) << "车次" << " | "
+            << std::setw(35) << "始发站" << " | "
+            << std::setw(35) << "终点站" << " | "
+            << std::setw(8) << "票价" << " | "
+            << std::setw(10) << "余票" << " | "
+            << std::setw(10) << "总路程" << " | "
+            << std::setw(10) << "总车程" << endl;
+    for(int i = 1;i <= UserList.GetLength();i++)
     {
         TrainNumber currentTrainNumber;
         TrainNumberList.GetElem(i,currentTrainNumber);
         std::cout << std::left
-                << std::setw(14) << currentTrainNumber.number <<" | "
-                << std::setw(14) << currentTrainNumber.begin <<" | "
-                << std::setw(4) << currentTrainNumber.end << " | "
-                << std::setw(2) << currentTrainNumber.price << " | "
-                << std::setw(18) << currentTrainNumber.remains << " | "
-                << std::setw(20) << currentTrainNumber.distance << " | "
-                << std::setw(14) << currentTrainNumber.train_distance <<endl;
+                << std::setw(20) << currentTrainNumber.number <<" | "
+                << std::setw(35) << currentTrainNumber.begin <<" | "
+                << std::setw(35) << currentTrainNumber.end << " | "
+                << std::setw(8) << currentTrainNumber.price << " | "
+                << std::setw(10) << currentTrainNumber.remains << " | "
+                << std::setw(10) << currentTrainNumber.distance << " | "
+                << std::setw(10) << currentTrainNumber.train_distance <<endl;
     }
     system("pause");
 }
@@ -678,7 +711,7 @@ void modifyTrainNumberList(SqList<TrainNumber>&TrainNumberList){
     std::cout << "请输入你想找的车次:";
     std::cin >> number;
     std::cout << "输入修改后的车次信息"<<endl;
-    for(int i = 0 ;i <= TrainNumberList.GetLength(); i++ ){
+    for(int i = 1 ;i <= TrainNumberList.GetLength(); i++ ){
         TrainNumber currentTrainNumber;
         TrainNumberList.GetElem(i,currentTrainNumber);
         if(currentTrainNumber.number == number)
@@ -735,13 +768,15 @@ void manageTrain(){
 
 void viewTrainList(SqList<Train>& TrainList){
     system("cls");
+    SetConsoleSize(120,80);
+    int k=TrainList.GetLength();
     int i = 0;
     std::cout << std::left
             << std::setw(14) << "编号" << " | "
             << std::setw(14) << "车次类型" << " | "
             << std::setw(14) << "车组" << " | "
             << std::setw(14) << "座位类型" << endl;
-    for(int i = 0;i <= TrainList.GetLength();i++)
+    for(int i = 1;i <= TrainList.GetLength();i++)
     {
         Train currentTrain;
         TrainList.GetElem(i,currentTrain);
@@ -760,7 +795,7 @@ void modifyTrain(SqList<Train>& TrainList){
     std::cout << "请输入你想找的车辆:";
     std::cin >> number;
     std::cout << "输入修改后的车辆资料"<<endl;
-    for(int i = 0 ;i <= TrainList.GetLength(); i++ ){
+    for(int i = 1 ;i <= TrainList.GetLength(); i++ ){
         Train currentTrain;
         TrainList.GetElem(i,currentTrain);
         if(currentTrain.number == number)
