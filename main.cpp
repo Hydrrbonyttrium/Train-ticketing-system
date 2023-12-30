@@ -147,6 +147,7 @@ void loginUser() {
         userMenu();
     } else {
         std::cout << "用户名或密码错误。\n";
+        system("pause");
     }
 }
 
@@ -195,9 +196,11 @@ void userMenu() {
                 break;
             case 7:
                 std::cout << "退出用户菜单.\n";
+                system("pause");
                 return; // 返回到登录界面
             default:
                 std::cout << "无效选择，请重试。\n";
+                system("pause");
                 break;
         }
     }
@@ -297,6 +300,7 @@ void queryTicketPrice() {
     } else {
         std::cout << "未找到车次为 " << trainNumber << " 的票信息" << std::endl;
     }
+    system("pause");
 }
 
 // 查看个人订单
@@ -339,6 +343,7 @@ void viewOrders() {
             break;
         }
     }
+    system("pause");
 }
 
 // 购买车票
@@ -365,6 +370,7 @@ void purchaseTicket() {
     } else {
         std::cout << "未找到车次为 " << trainNumber << " 的票信息" << std::endl;
     }
+    system("pause");
 }
 
 void queryInterCityPath() {
@@ -418,6 +424,7 @@ void queryInterCityPath() {
             break;
         }
     }
+    system("pause");
 }
 
 // 预售车票
@@ -457,6 +464,7 @@ void refundOrChangeTicket() {
             break;
         }
     }
+    system("pause");
 }
 
 //**********************************//
@@ -479,6 +487,7 @@ void loginAdmin() {
         adminMenu();
     else
         std::cout << "非管理员用户或用户名或密码错误" << endl;
+    system("pause");
 }
 
 // 管理员主菜单函数
