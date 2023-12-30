@@ -303,24 +303,53 @@ void queryTicketPrice() {
 void viewOrders() {
     SetConsoleSize(80, 20);
     system("cls");
+    std::cout << "\t\t╔══════════════════════════════════════╗\n";
+    std::cout << "\t\t║      欢迎使用铁路票务管理系统        ║\n";
+    std::cout << "\t\t╠══════════════════════════════════════╣\n";
+    std::cout << "\t\t║            查看个人订单              ║\n";
+    std::cout << "\t\t╚══════════════════════════════════════╝\n";
     User tempUser = currentUser;
     string tempCurrentUserTicket = tempUser.tickets;
-    cout << "该用户拥有票：" << endl;
+    cout << "您当前拥有票：" << endl;
     // 遍历用户拥有的票，并在遇到'/'字符时换行打印
+    // 格式化输出
+    std::cout << "\t\t╔═════╗\n";
     for (char ch : tempUser.tickets) {
         if (ch == '/') {
-            std::cout << std::endl;
-        } else {
+            std::cout << "║" <<std::endl;
+        }
+        else if (ch == 'G') {
+            std::cout << "\t\t║" << ch;
+        }
+        else {
             std::cout << ch;
         }
     }
+    std::cout << "║" << endl;
+    std::cout << "\t\t╚═════╝\n" << endl;
     std::cout << std::endl;
+
+    while (TRUE) {
+        char result;
+        std::cout << "按q结束查询：";
+        std::cin >> result;
+        if (result == 'q') {
+            SetConsoleSize(80, 20);
+            system("cls");
+            break;
+        }
+    }
 }
 
 // 购买车票
 void purchaseTicket() {
     SetConsoleSize(80, 20);
     system("cls");
+    std::cout << "\t\t╔══════════════════════════════════════╗\n";
+    std::cout << "\t\t║      欢迎使用铁路票务管理系统        ║\n";
+    std::cout << "\t\t╠══════════════════════════════════════╣\n";
+    std::cout << "\t\t║            购买车票菜单              ║\n";
+    std::cout << "\t\t╚══════════════════════════════════════╝\n";
     std::string trainNumber;
     std::string seatType;
 
