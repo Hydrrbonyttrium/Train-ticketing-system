@@ -169,7 +169,7 @@ void userMenu() {
         std::cout << "\t\t║ 3. 查询城际路径                      ║\n";
         std::cout << "\t\t║ 4. 购买车票                          ║\n";
         std::cout << "\t\t║ 5. 查询个人订单                      ║\n";
-        std::cout << "\t\t║ 6. 退票/改签                         ║\n";
+        std::cout << "\t\t║ 6. 退票                            ║\n";
         std::cout << "\t\t║ 7. 退出系统                          ║\n";
         std::cout << "\t\t╚══════════════════════════════════════╝\n";
         std::cout << "选择操作 (1-7): ";
@@ -499,7 +499,7 @@ void adminMenu() {
         std::cout << "\n管理员菜单:\n";
         std::cout << "1. 用户资料管理\n";
         std::cout << "2. 车次信息管理\n";
-        std::cout << "3. 录入/修改车辆类别信息\n";
+        std::cout << "3. 修改车辆类别信息\n";
         std::cout << "4. 退出系统\n";
         std::cout << "选择操作 (1-4): ";
         std::cin >> choice;
